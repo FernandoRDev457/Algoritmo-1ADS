@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12 - Pizza dos Amigos</title>
+</head>
+
+<body>
+    <h1>Exercício 12 - Pizza dos Amigos</h1>
+
+    <div>
+        Informe o sabor da Pizza:
+        <input type="text" id="input_saborPizza">
+        <br><br>
+
+        Informe o preço da Pizza:
+        <input type="number" id="input_precoPizza">
+        <br><br>
+
+        Informe a quantidade de amigos que irão comer a Pizza:
+        <input type="text" id="input_qtdAmigos">
+    </div>
+
+    <br><br>
+
+    <button onclick="calcularPrecoPorAmigo()">Ver valor por amigo</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function calcularPrecoPorAmigo() {
+        var precoPizza = Number(input_precoPizza.value);
+        var qtdAmigos = Number(input_qtdAmigos.value);
+    
+        var precoPorAmigoPizza = (precoPizza + (precoPizza * 0.1)) / qtdAmigos
+
+        div_mensagem.innerHTML = `Cada amigo vai colaborar com R$${precoPorAmigoPizza} para a pizza de ${input_saborPizza.value}.`;
+    }
+</script>

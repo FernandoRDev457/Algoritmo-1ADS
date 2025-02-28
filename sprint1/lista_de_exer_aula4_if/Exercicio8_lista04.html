@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8 - Calcular Peso Médio do Elevador</title>
+</head>
+
+<body>
+    <h1>Exercício 8 - Calcular Peso Médio do Elevador</h1>
+
+    <div>
+        Informe a quantidade de homens que entraram no elevador:
+        <br>
+        <input type="text" id="input_qtdHomens">
+        <br><br>
+
+        Infome a quantidade de mulheres que entraram no elevador:
+        <br>
+        <input type="text" id="input_qtdMulheres">
+    </div>
+
+    <br>
+
+    <button onclick="analisarPeso()">Analisar Peso</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function analisarPeso() {
+        var qtdHomens = Number(input_qtdHomens.value);
+        var qtdMulheres = Number(input_qtdMulheres.value);
+
+        var pesoTotal = (qtdHomens * 80) + (qtdMulheres * 60);
+
+        div_mensagem.innerHTML = `Este elevador suporta 800 Kg e o peso estimado desta lotação é de ${pesoTotal}kg`;
+
+        if (pesoTotal > 800) {
+            div_mensagem.innerHTML += '<br><b style="color: blue">Será necessário que alguém desça para que o elevador se movimente</b>';
+        }
+    }
+</script>

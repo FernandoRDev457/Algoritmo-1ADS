@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4 - Onde eu moro</title>
+</head>
+<body>
+    <h1>Olá, insira os dados nos campos a seguir para prosseguir:</h1>
+
+    <br>
+
+    <div>
+        Nome da Rua/Avenida/Vila:
+        <input type="text" id="input_rua">
+        <br>
+        Número da Casa:
+        <input type="number" min="0" id="input_numCasa">
+        <br><br>
+        <button onclick="buttonOndeMoro()">Onde eu moro</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function buttonOndeMoro() {
+        alert('Seu logradouro é ' + input_rua.value +
+              '\nO número do seu logradouro é ' + input_numCasa.value);
+    }
+</script>

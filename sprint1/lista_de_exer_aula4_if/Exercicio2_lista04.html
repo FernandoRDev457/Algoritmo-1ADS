@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2 - Latinhas de Refri do Joka</title>
+</head>
+
+<body>
+    <h1>Exercício 2 - Latinhas de Refri do Joka</h1>
+
+    <div>
+        Quantas latinhas de refrigerante o senhor toma por dia:
+        <input type="text" id="input_qtdLatinhas">
+    </div>
+
+    <br>
+
+    <button onclick="calcularLatinhas()">Quantos Refris?</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function calcularLatinhas(){
+        var qtdLatinhas = Number(input_qtdLatinhas.value);
+
+        var totalLatinhasAnual = qtdLatinhas * 365;
+
+        div_mensagem.innerHTML = `Você consome o total de ${totalLatinhasAnual} latinhas de refri por ano!`;
+
+        if(totalLatinhasAnual > 500){
+            div_mensagem.innerHTML += '<br>Cuidado com a diabetes!';
+        }
+    }
+</script>

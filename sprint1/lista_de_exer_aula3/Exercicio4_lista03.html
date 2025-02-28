@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4 - Exibindo KI</title>
+</head>
+<body>
+    <h1>Exercício 4 - Exibindo KI</h1>
+
+    <div>
+        Informe o Nome do Guerreiro: 
+        <input type="text" id="input_nomeGuerreiro">
+        <br><br>
+        Insira o valor do KI normal do guerreiro:
+        <input type="text" id="input_valorKi">
+
+        <br><br>
+
+        <button onclick="calcularKi()">Ver Ki em cada forma</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function calcularKi(){
+        var nomeGuerreiro = input_nomeGuerreiro.value;
+        var valorKi = Number(input_valorKi.value);
+
+        var kiSuperSayajin = valorKi * 50;
+        var kiSuperSayajin2 = valorKi * 100;
+        alert('Olá Guerreiro ' + nomeGuerreiro + '\n\nSeu ki na forma Super Sayajin é de ' + kiSuperSayajin);
+        alert('Olá Guerreiro ' + nomeGuerreiro + '\n\nSeu ki na forma Super sayajin 2 é de ' + kiSuperSayajin2);
+    }
+</script>

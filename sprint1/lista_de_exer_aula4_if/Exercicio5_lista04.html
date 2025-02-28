@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5 - Conta do Mês</title>
+</head>
+
+<body>
+    <h1>Exercício 5 - Conta do Mês</h1>
+
+    <div>
+        Informe a quantidade de Kwh consumida no mês:
+        <input type="text" id="input_kwhConsumida">
+    </div>
+
+    <br>
+
+    <button onclick="calcularContaLuz()">Calcular conta de Luz</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function calcularContaLuz(){
+        var kwhConsumida = Number(input_kwhConsumida.value);
+        
+        var contaDoMes = kwhConsumida * 0.85;
+
+        if(kwhConsumida < 100){
+            contaDoMes = contaDoMes - (contaDoMes * 0.10);
+        }
+
+        div_mensagem.innerHTML = `O valor da conta deste Mês é de R$${contaDoMes}`;
+    }
+</script>

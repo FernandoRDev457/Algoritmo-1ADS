@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 7 - Controle de Saldo</title>
+</head>
+<body>
+    <h1>Exercício 7 - Controle de Saldo: Receba e Pague</h1>
+
+    <h3>Seu saldo Atual é de R$<b id="b_saldo">0</b></h3>
+
+    <div>
+        <button onclick="receberDinheiro()">Receber 100</button>
+        <button onclick="pagarDinheiro()">Pagar 50</button>
+    </div>
+</body>
+</html>
+
+<script>
+    var saldoConta = 0;
+
+    function receberDinheiro(){
+        saldoConta += 100;
+        b_saldo.innerHTML = saldoConta
+        alert('Transferência de R$100 recebida!');
+    }
+
+    function pagarDinheiro(){
+        saldoConta -= 50;
+        b_saldo.innerHTML = saldoConta
+        alert('Pagamento de R$50 efetuado!');
+    }
+
+</script>

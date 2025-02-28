@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exerc[cio 3 - Calculando Desempenho da Paty</title>
+</head>
+
+<body>
+    <h1>Exerc[cio 3 - Calculando Desempenho da Paty</h1>
+
+    <div>
+        Informe sua 1° nota:
+        <input type="text" id="input_nota1">
+        <br><br>
+
+        Informe sua 2° nota:
+        <input type="text" id="input_nota2">
+        <br><br>
+
+        Informe sua 3° nota:
+        <input type="text" id="input_nota3">
+    </div>
+
+    <br>
+
+    <button onclick="calcularDesempenho()">Analisar Desempenho</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function calcularDesempenho(){
+        var nota1 = Number(input_nota1.value);
+        var nota2 = Number(input_nota2.value);
+        var nota3 = Number(input_nota3.value);
+
+        var media = (nota1 + nota2 + nota3) / 3;
+
+        div_mensagem.innerHTML = `Sua média foi de ${media}`;
+
+        if(media > 9.4){
+            div_mensagem.innerHTML += '<br>Parabéns, você é fora de série!'
+        }
+    }
+</script>

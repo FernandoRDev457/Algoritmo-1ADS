@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11 - Criação de Tabuada</title>
+</head>
+
+<body>
+    <h1>Exercício 11 - Criação de Tabuada</h1>
+    <div>
+        Informe um número para ver a Tabuada
+        <input type="number" id="input_numTabuada">
+    </div>
+    <br>
+
+    <button onclick="calcular()">Executar a Tabuada</button>
+    <br><br>
+
+    <div id="div_tabuada"></div>
+
+</body>
+
+</html>
+
+<script>
+    function calcular() {
+        var num = Number(input_numTabuada.value)
+
+        div_tabuada.innerHTML =
+        `<b>A tabuada do ${num} é :</b>
+        <br>${num} x 1 = ${num * 1}
+        <br>${num} x 2 = ${num * 2}
+        <br>${num} x 3 = ${num * 3}
+        <br>${num} x 4 = ${num * 4}
+        <br>${num} x 5 = ${num * 5}
+        <br>${num} x 6 = ${num * 6}
+        <br>${num} x 7 = ${num * 7}
+        <br>${num} x 8 = ${num * 8}
+        <br>${num} x 9 = ${num * 9}
+        <br>${num} x 10 = ${num * 10}`
+    }
+</script>

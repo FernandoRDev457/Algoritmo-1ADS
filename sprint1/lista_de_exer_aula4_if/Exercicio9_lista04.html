@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9 - Tempo de Streaming</title>
+</head>
+
+<body>
+    <h1>Exercício 9 - Tempo de Streaming</h1>
+
+    <div>
+        Informe sua última série (SITCOM) que você assistiu:
+        <br>
+        <input type="text" id="input_serieSitcom">
+        <br><br>
+
+        Informe o total de episódios que você ja assistiu da série:
+        <br>
+        <input type="text" id="input_epAssistidos">
+    </div>
+
+    <br><br>
+
+    <button onclick="verificarNivel()">Verificar Nível</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function verificarNivel() {
+        var totalEP = Number(input_epAssistidos.value);
+
+        var totalHoras = (totalEP * 22) / 60;
+
+        div_mensagem.innerHTML = `Vejo que você gosta da série ${input_serieSitcom.value}`;
+
+        if (totalHoras > 30) {
+            div_mensagem.innerHTML += '<br>Uau, você realmente gosta dessa série!';
+        }
+    }
+</script>

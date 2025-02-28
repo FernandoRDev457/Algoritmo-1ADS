@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14 - Você é maior de 18?</title>
+</head>
+
+<body>
+    <h1>Exercício 14 - Você é maior de 18?</h1>
+
+    <div>
+        Informe o seu nome:
+        <input type="text" id="input_nome">
+        <br><br>
+
+        Informe a sua idade:
+        <input type="text" id="input_idade">
+    </div>
+
+    <br>
+
+    <button onclick="avaliarAluno()">Avaliar Aluno</button>
+
+    <br><br>
+    
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function avaliarAluno() {
+        var idade = Number(input_idade.value);
+        var nome = input_nome.value;
+
+        if (idade >= 18) {
+            div_mensagem.innerHTML = `${nome}, vamos tirar a CNH?`;
+        } else {
+            div_mensagem.innerHTML = `${nome}, vai jogar PlayStation!`;
+        }
+    }
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10 - Apurador de Votos</title>
+</head>
+
+<body>
+    <h1>Exercício 10 - Apurador de Votos</h1>
+    <div>
+        Informe a Quantidade de Votos do Candidato A na eleição:
+        <input type="number" id="input_candA">
+        <br><br>
+
+        Informe a Quantidade de Votos de Candidato B na eleição:
+        <input type="number" id="input_candB">
+        <br><br>
+
+        Informe a Quantidade de Votos Brancos na eleição:
+        <input type="number" id="input_votoBranco">
+        <br><br>
+
+        Informe a Quantidade de Votos Nulos na eleição:
+        <input type="number" id="input_votoNulo">
+        <br><br>
+    </div>
+
+    <button onclick="calcularResultado()">Resultado da Eleição</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function calcularResultado() {
+        var votoCandA = Number(input_candA.value);
+        var votoCandB = Number(input_candB.value);
+        var votoBranco = Number(input_votoBranco.value);
+        var votoNulo = Number(input_votoNulo.value);
+
+        var totalVotos = votoCandA + votoCandB + votoBranco + votoNulo;
+
+        var percentualCandA = (votoCandA * 100) / totalVotos;
+        var percentualCandB = (votoCandB * 100) / totalVotos;
+
+        var totalInvalidos = votoBranco + votoNulo;
+        var percentualInvalidos = (totalInvalidos * 100) / totalVotos;
+
+        div_mensagem.innerHTML = `<b>Total de votos: ${totalVotos} </b>
+                                <br>Candidato A: ${percentualCandA}% (${votoCandA} votos)
+                                <br>Candidato B: ${percentualCandB}% (${votoCandB} votos)
+                                <br>Inválidos: ${percentualInvalidos} (${totalInvalidos} votos)`;
+    }
+
+</script>

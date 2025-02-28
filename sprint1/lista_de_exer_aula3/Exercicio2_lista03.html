@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2 - Pizzaria com Amigos</title>
+</head>
+<body>
+    <h1>Exercício 2 - Pizzaria com Amigos</h1>
+
+    <div>
+        Informe o valor da Pizza:
+        <input type="text" id="input_valorPizza">
+        <br><br>
+        Informe a quantidade de Amigos:
+        <input type="text" id="input_qtdAmigos">
+
+        <br><br>
+        
+        <button onclick="calcularPrecoPorAmigos()">
+            #LovePizza
+        </button>
+    </div>
+</body>
+</html>
+
+<script>
+    function calcularPrecoPorAmigos(){
+        var precoPizza = Number(input_valorPizza.value);
+        var qtdAmigos = Number(input_qtdAmigos.value);
+
+        var precoPorAmigo = precoPizza / qtdAmigos;
+
+        alert('Cada um dos ' + qtdAmigos + ' vai pagar R$' + precoPorAmigo + ' reais');
+
+    }
+</script>

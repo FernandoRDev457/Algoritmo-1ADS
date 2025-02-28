@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2 - Calculadora de Peso e Altura</title>
+</head>
+<body>
+    <h1>Olá, insira os dados nos campos a seguir para prosseguir:</h1>
+
+    <br>
+
+    <div>
+        Peso:
+        <input type="number" min="0" id="input_peso">
+        <br>
+        Altura:
+        <input type="number" min="0" id="input_altura">
+        <br><br>
+        <button onclick="buttonFaleComigo()">fale Comigo</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function buttonFaleComigo() {
+        alert('Você pesa ' + input_peso.value + 'kg e tem ' + input_altura.value + 'm de altura.')
+    }
+</script>

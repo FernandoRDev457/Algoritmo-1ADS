@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5 - Média SPtech</title>
+</head>
+<body>
+    <h1>Exercício 5 - Média SPtech</h1>
+
+    <div>
+        Informe a nota do Aluno da Avaliação continuada: 
+        <input type="text" id="input_notaContinuada">
+        <br><br>
+        Informe a nota do Aluno da Avaliação semestral: 
+        <input type="text" id="input_notaSemestral">
+        <br><br>
+        Informe o nome do Aluno:
+        <input type="text" id="input_nomeAluno">
+
+        <br><br>
+
+        <button onclick="calcularMediaAluno()">Exibir Média</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function calcularMediaAluno(){
+        var notaContinuada = Number(input_notaContinuada.value);
+        var notaSemestral = Number(input_notaSemestral.value);
+        var nomeAluno = input_nomeAluno.value;
+
+        var media = (notaContinuada * 0.4) + (notaSemestral * 0.6)
+        alert('A média de ' + nomeAluno + ' será de ' + media);
+    }
+</script>

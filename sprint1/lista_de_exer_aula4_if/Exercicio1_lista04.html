@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1 - Partiu Festa?</title>
+</head>
+<body>
+    <h1>Exercício 1 - Partiu Festa?</h1>
+
+    <div>
+        Informe a sua idade:
+        <input type="number" min="0" id="input_idade">
+    </div>
+
+    <br>
+
+    <button onclick="irFesta()">Ir para Festa</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+</html>
+
+<script>
+    function irFesta(){
+        var idade = input_idade.value;
+
+        if(idade < 18){
+            div_mensagem.innerHTML = 'Pedir permissão pro responsável';
+        }
+
+        if(idade >= 18){
+            div_mensagem.innerHTML = '#partiuFesta'
+        }
+    }
+</script>

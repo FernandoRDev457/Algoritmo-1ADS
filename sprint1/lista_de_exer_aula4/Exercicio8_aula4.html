@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8 - Gerenciador de Saldo</title>
+</head>
+<body>
+    <h1>Exercício 8 - Gerenciador de Saldo</h1>
+
+    <h3>Seu saldo Atual é de R$<b id="b_saldo">0</b></h3>
+
+    <div>
+        Insira o valor para efetuar a ação:
+        <br>
+        <input type="number" id="input_valorInsert">
+    </div>
+
+    <br><br>
+
+    <div>
+        <button onclick="depositarDinheiro()">Depositar</button>
+        <button onclick="retirarDinheiro()">Retirar</button>
+    </div>
+</body>
+</html>
+
+<script>
+    var saldoConta = 0;
+
+    function depositarDinheiro(){
+        saldoConta += Number(input_valorInsert.value);
+        b_saldo.innerHTML = saldoConta
+        alert(`Depósito de R$ ${input_valorInsert.value} efetuada!`);
+    }
+
+    function retirarDinheiro(){
+        saldoConta -= Number(input_valorInsert.value);
+        b_saldo.innerHTML = saldoConta
+        alert(`Retirada de R$ ${input_valorInsert.value} efetuada!`);
+    }
+
+</script>

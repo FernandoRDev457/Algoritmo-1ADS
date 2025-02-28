@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 15 - Analisando Conta do Banco</title>
+</head>
+
+<body>
+    <h1>Exercício 15 - Analisando Conta do Banco</h1>
+
+    <div>
+        Informe o saldo da conta:
+        <input type="text" id="input_saldoConta">
+        <br><br>
+
+        Informe o valor do débito:
+        <input type="text" id="input_valorDebito">
+    </div>
+
+    <br>
+
+    <button onclick="analisarConta()">Analisar Conta</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function analisarConta(){
+        var saldoConta = Number(input_saldoConta.value);
+        var valorDebito = Number(input_valorDebito.value);
+
+        var saldoContaAtual = saldoConta - valorDebito;
+
+        if(saldoContaAtual >= 0){
+            div_mensagem.innerHTML = `<i style="color: blue">O saldo atual da conta corrente é R$${saldoContaAtual}</i>` 
+        } else {
+            div_mensagem.innerHTML = `<b style="color: red">O saldo atual da conta corrente é R$${saldoContaAtual}</b>` 
+        }
+
+    }
+</script>

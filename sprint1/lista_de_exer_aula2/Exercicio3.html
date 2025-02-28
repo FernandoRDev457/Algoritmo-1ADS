@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3 - Futebol</title>
+</head>
+<body>
+    <h1>Olá, insira os dados nos campos a seguir para prosseguir:</h1>
+
+    <br>
+
+    <div>
+        Nome do Time:
+        <input type="text" id="input_nomeTime">
+        <br>
+        Qtd. de Titulos:
+        <input type="text" id="input_qtdTitulos">
+        <br><br>
+        <button onclick="buttonAmoMeuTime()">Amo meu Time</button>
+    </div>
+</body>
+</html>
+
+<script>
+    function buttonAmoMeuTime() {
+        alert('O time ' + input_nomeTime.value + ' tem ' + input_qtdTitulos.value + ' títulos.')
+    }
+</script>

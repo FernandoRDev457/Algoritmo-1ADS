@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12 - Peso do Elevador</title>
+</head>
+
+<body>
+    <h1>Exercício 12 - Peso do Elevador</h1>
+
+    <div>
+        Informe o peso total presente no elevador:
+        <input type="text" id="input_pesoElevador">
+    </div>
+
+    <br>
+
+    <button onclick="ligarElevador()">Ligar elevador</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function ligarElevador() {
+        var pesoAtualElevador = Number(input_pesoElevador.value);
+
+        if (pesoAtualElevador < 500) {
+            div_mensagem.innerHTML = 'Elevador vai se Mover';
+        } else {
+            div_mensagem.innerHTML = 'Alguém precisa descer do elevador';
+        }
+    }
+</script>

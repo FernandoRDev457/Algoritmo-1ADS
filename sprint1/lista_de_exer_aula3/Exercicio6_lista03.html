@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 6 - Calculadora Inteligente</title>
+</head>
+
+<body>
+    <h1>Exercício 6 - Calculadora Inteligente</h1>
+
+    <div>
+        Informe o 1° número:
+        <input type="text" id="input_nota1">
+        <br><br>
+        Informe o 2° número:
+        <input type="text" id="input_nota2">
+        <br><br>
+
+        <button onclick="somar()">+</button>
+        <button onclick="subtrair()">-</button>
+        <button onclick="dividir()">/</button>
+        <button onclick="multiplicar()">*</button>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function multiplicar() {
+        var nota1 = Number(input_nota1.value)
+        var nota2 = Number(input_nota2.value)
+
+        alert('O produto entre '+ nota1 + ' e ' + nota2 + ' é ' + nota1 * nota2);
+    };
+
+    function dividir() {
+        var nota1 = Number(input_nota1.value)
+        var nota2 = Number(input_nota2.value)
+
+        alert('O razão entre '+ nota1 + ' e ' + nota2 + ' é ' + nota1 / nota2);
+    };
+
+    function subtrair() {
+        var nota1 = Number(input_nota1.value)
+        var nota2 = Number(input_nota2.value)
+        
+        alert('O diferença entre '+ nota1 + ' e ' + nota2 + ' é ' + (nota1 - nota2));
+    };
+
+    function somar() {
+        var nota1 = Number(input_nota1.value)
+        var nota2 = Number(input_nota2.value)
+        
+        alert('O soma entre '+ nota1 + ' e ' + nota2 + ' é ' + (nota1 + nota2));
+    };
+</script>
