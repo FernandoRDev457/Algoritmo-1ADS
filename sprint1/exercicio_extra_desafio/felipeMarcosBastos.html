@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício Extra - Desafio</title>
+</head>
+
+<body>
+    <h1>Desafio - Cálculo do Transporte de Felipe</h1>
+
+    <div>
+        Informe o horário que você chegou ao ponto de ônibus (em horas):
+        <input type="text" id="input_hrsChegadaPonto">
+    </div>
+
+    <br>
+
+    <button onclick="calcularTransporte()">Calcular Transporte</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+
+</body>
+
+</html>
+
+<script>
+    function calcularTransporte() {
+        var hrsChegadaPonto = Number(input_hrsChegadaPonto.value);
+        var valorGasto = 0;
+
+        if (hrsChegadaPonto > 9) {
+            div_mensagem.innerHTML = "Você não chegou no horário! Precisou pegar um Uber.";
+
+            valorGasto = 10 + 5;
+        } else {
+            div_mensagem.innerHTML = "Você chegou a tempo no ponto de Ônibus!";
+
+            valorGasto = 5 * 2;
+        }
+
+        div_mensagem.innerHTML += `<br>O valor gasto no dia foi de: R$${valorGasto}`;
+    }
+</script>

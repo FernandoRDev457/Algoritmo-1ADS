@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4 - Avaliação de Peso Infantil: Está Dentro da Faixa Saudável?</title>
+</head>
+
+<body>
+    <h1>Exercício 4 - Avaliação de Peso Infantil: Está Dentro da Faixa Saudável?</h1>
+
+    <div>
+        Informe o Peso (em Kg) da criança:
+        <input type="text" id="input_peso">
+    </div>
+
+    <br>
+
+    <button onclick="avaliarPeso()">Avaliar Peso</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function avaliarPeso() {
+        var peso = Number(input_peso.value);
+
+        if (peso <= 13.5) {
+            div_mensagem.innerHTML = 'Abaixo do Peso';
+        } else if (peso == 18.3) {
+            div_mensagem.innerHTML = 'Peso Perfeito';
+        } else if (peso <= 21.2) {
+            div_mensagem.innerHTML = 'Peso na Média';
+        } else {
+            div_mensagem.innerHTML = 'Acima do Peso';
+        }
+    }
+</script>
