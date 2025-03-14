@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+    <h1>Simulador de Prejuízo Financeiro e Ambiental na Mortalidade de Répteis</h1>
+
+    <div>
+        <h3>Dados Geral dos Animais</h3>
+        <div>
+            Informe o Tipo da Espécie de Reptil (ex: Geeko, Cobra): <br>
+            <input type="text" id="input_especie">
+            <br><br>
+
+            Informe o Número Total de Animais da Espécie na Instituição: <br>
+            <input type="number" id="input_totalEspecie">
+            <br><br>
+
+            Informe a Idade do Animal (em Anos): <br>
+            <input type="number" id="input_idadeAnimal">
+            <br><br>
+
+            Informe o Custo Mensal de Manutenção por Animal (comida, saúde, energia, estrutura etc): <br>
+            <input type="number" id="input_custoMensal">
+        </div>
+
+        <br>
+
+        <h3>Parametros do Recinto</h3>
+        <div>
+            Informe a Temperatura Atual do Recinto:
+            <input type="number" id="input_tempAtual">
+            <br><br>
+
+            Informe a Temperatura Ideal do Recinto:
+            <input type="number" id="input_tempIdeal">
+            <br><br><br>
+
+            Informe a Umidade Atual do Recinto:
+            <input type="number" id="input_umidAtual">
+            <br><br>
+
+            Informe a Umidade Ideal do Recinto:
+            <input type="number" id="input_umidIdeal">
+        </div>
+    </div>
+
+    <br>
+
+    <button onclick="simularPreju()">Simular Prejuízo</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function simularPreju() {
+        //VARIAVEIS GERAIS DO ANIMAL 
+        var especie = input_especie.value;
+        var totalEspecie = Number(input_totalEspecie.value);
+        var idadeAnimal = Number(input_idadeAnimal.value) * 12;
+        var custoMensal = Number(input_custoMensal.value);
+
+        //VARIAVEIS DOS PARAMETROS 
+        var tempAtual = Number(input_tempAtual.value);
+        var tempIdeal = Number(input_tempIdeal.value);
+        var umidAtual = Number(input_umidAtual.value);
+        var umidIdeal = Number(input_umidIdeal.value);
+
+        //VARIAVEIS QUE COM BASE NO IF RESULTAM VALORES 
+        var percentualMortalidade = 0;
+
+
+        //CALCULANDO DIFERENÇA DA TEMP E UMID EM RELAÇÃO AOS PARAMETROS IDEIAS 
+        var diferTemp = tempIdeal - tempAtual;
+        if (diferTemp < 0) {
+            diferTemp = diferTemp * -1;
+        }
+
+        var diferUmid = umidIdeal - umidAtual;
+        if (diferUmid < 0) {
+            diferUmid = diferUmid * -1;
+        }
+
+        //CALCULANDO QUANTO SERÁ A TAXA DE MORTALIDADE COM BASE NA DIFERENÇA DA TEMPERATURA E UMIDADE
+        if (diferTemp == 0) {
+            percentualMortalidade += 0;
+        } else if (diferTemp <= 3) {
+            percentualMortalidade += 0.05;
+        } else if (diferTemp <= 6) {
+            percentualMortalidade += 0.15;
+        } else {
+            percentualMortalidade += 0.3;
+        }
+
+        if (diferUmid == 0) {
+            percentualMortalidade += 0;
+        } else if (diferUmid <= 10) {
+            percentualMortalidade += 0.05;
+        } else if (diferUmid <= 20) {
+            percentualMortalidade += 0.15;
+        } else {
+            percentualMortalidade += 0.3;
+        }
+
+        //CALCULANDO A ESTIMATIVA DA QUANTIDADE DE AFETADOS DA ESPECIE DEVIDO A VARIAÇÃO DA TEMP E UMID
+        var qtdDaEspecieAfetados = totalEspecie * percentualMortalidade;
+
+
+        //CALCULAR PREJUIZO FINANCEIRO
+        if (percentualMortalidade == 0) {
+            div_mensagem.innerHTML += 'Recinto na Medida Ideal <br>';
+        }
+
+        var prejuizoFinanceiro = (qtdDaEspecieAfetados * idadeAnimal) * qtdDaEspecieAfetados;
+
+        //ARREDONDANDO VALOR DA ESTIMATIVA DE AFETADOS DA ESPECIE
+        var qtdDaEspecieAfetadosArredondado = (qtdDaEspecieAfetados + 0.5) - (qtdDaEspecieAfetados + 0.5) % 1;
+
+
+        //EXIBINDO MENSAGEM DO PREJUIZO FINANCEIRO
+        div_mensagem.innerHTML = `
+            <h2>Estimativa de Impacto Financeiro</h2>
+            O prejuízo financeiro estimado é de R$${prejuizoFinanceiro}. <br>
+            Durante ${idadeAnimal / 12} anos, cada animal exigiu um custo mensal de manutenção de R$${custoMensal} , totalizando R$${custoMensal * idadeAnimal} por indivíduo nesse período.
+            A taxa de mortalidade projetada foi de ${percentualMortalidade * 100}% , resultando em um número estimado de ${qtdDaEspecieAfetadosArredondado} animais da espécie ${especie} afetados, devido à variação de temperatura e umidade fora dos parâmetros ideais.
+        `;
+
+        /*
+        Prejuízo ambiental
+considerando uma população total de 1000 indivíduos da espécie, essa estimativa representa uma perda de aproximadamente XX% do total.
+
+Caso a mortalidade tenha efeitos reprodutivos em casais, estima-se que XX filhotes deixaram de nascer, impactando ainda mais a conservação da espécie.
+        */
+    }
+
+</script>

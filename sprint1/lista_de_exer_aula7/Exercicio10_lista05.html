@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10 - Avaliando se a Velocidade foi Ultrapassada!!</title>
+</head>
+
+<body>
+    <h1>Exercício 10 - Avaliando se a Velocidade foi Ultrapassada!!</h1>
+
+    <div>
+        Informe a velocidade que você estava dirigindo em (km/h):
+        <input type="text" id="input_velocidade">
+        <br><br>
+
+        Informe o limite da velocidade da via (km/h):
+        <input type="text" id="input_limiteVelocidade">
+    </div>
+
+    <br>
+
+    <button onclick="calcular()">Verificar</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        var velocidade = Number(input_velocidade.value);
+        var limiteVelocidade = Number(input_limiteVelocidade.value);
+
+        if (velocidade <= limiteVelocidade) {
+            div_mensagem.innerHTML = "Velocidade dentro do limite. Boa direção!";
+        } else {
+            var percentualVelocidade = (velocidade - limiteVelocidade) / limiteVelocidade * 100;
+
+            if (percentualVelocidade <= 20) {
+                div_mensagem.innerHTML = "Atenção! Excedendo o limite permitido.";
+            } else {
+                div_mensagem.innerHTML = "Multa grave! Velocidade muito acima do permitido.";
+
+            }
+        }
+    }
+</script>

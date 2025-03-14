@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9 - Avaliando Saúde do Usuário</title>
+</head>
+
+<body>
+    <h1>Exercício 9 - Avaliando Saúde do Usuário</h1>
+
+    <div>
+        Informe o seu peso (kg):
+        <input type="text" id="input_peso">
+        <br><br>
+
+        Informe a sua altura (m):
+        <input type="text" id="input_altura">
+    </div>
+
+    <br>
+
+    <button onclick="calcular()">Calcular IMC</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function calcular() {
+        var peso = Number(input_peso.value);
+        var altura = Number(input_altura.value);
+
+        var imc = peso / (altura ** 2);
+
+        if (imc < 18.5) {
+            div_mensagem.innerHTML = 'Abaixo do peso;';
+        } else if (imc <= 24.9) {
+            div_mensagem.innerHTML = 'Peso normal;';
+        } else if (imc <= 29.9) {
+            div_mensagem.innerHTML = 'Acima do peso;';
+        } else {
+            div_mensagem.innerHTML = 'Cuidado, risco de obesidade;';
+        }
+    }
+</script>
