@@ -11,7 +11,7 @@
     <h1>Simulador de Prejuízo Financeiro e Ambiental na Mortalidade de Répteis</h1>
 
     <div>
-        <h3>Dados Geral dos Animais</h3>
+        <h3>- Dados Geral do Réptil</h3>
         <div>
             Informe o Tipo da Espécie de Reptil (ex: Geeko, Cobra): <br>
             <input type="text" id="input_especie">
@@ -31,7 +31,23 @@
 
         <br>
 
-        <h3>Parametros do Recinto</h3>
+        <h3>- Parâmetros Reprodutivos</h3>
+        <div>
+            Informe o tipo de reprodução da espécie ('Assexuado' ou 'Sexual'): <br>
+            <input type="text" id="input_tipoReproducao">
+            <br><br>
+
+            Informe quantos ciclos reprodutivos ocorrem por ano na espécie: <br>
+            <input type="number" id="input_cicloReproducao">
+            <br><br>
+
+            Informe a quantidade aproximada de ovos que essa espécie costuma botar: <br>
+            <input type="text" id="input_qtdOvos">
+        </div>
+
+        <br>
+
+        <h3>- Parametros do Recinto</h3>
         <div>
             Informe a Temperatura Atual do Recinto:
             <input type="number" id="input_tempAtual">
@@ -69,11 +85,17 @@
         var idadeAnimal = Number(input_idadeAnimal.value) * 12;
         var custoMensal = Number(input_custoMensal.value);
 
+        //VARIAVEIS DOS PARAMETROS REPRODUTIVOS
+        var tipoReproducao = Number(input_tipoReproducao.value);
+        var cicloRepro = Number(input_cicloReproducao.value);
+        var qtdOvosEspecie = Number(input_qtdOvos.value);
+
         //VARIAVEIS DOS PARAMETROS 
         var tempAtual = Number(input_tempAtual.value);
         var tempIdeal = Number(input_tempIdeal.value);
         var umidAtual = Number(input_umidAtual.value);
         var umidIdeal = Number(input_umidIdeal.value);
+
 
         //VARIAVEIS QUE COM BASE NO IF RESULTAM VALORES 
         var percentualMortalidade = 0;
@@ -94,22 +116,24 @@
         if (diferTemp == 0) {
             percentualMortalidade += 0;
         } else if (diferTemp <= 3) {
-            percentualMortalidade += 0.05;
+            percentualMortalidade += 0.10;
         } else if (diferTemp <= 6) {
-            percentualMortalidade += 0.15;
+            percentualMortalidade += 0.20;
         } else {
-            percentualMortalidade += 0.3;
+            percentualMortalidade += 0.40;
         }
 
         if (diferUmid == 0) {
             percentualMortalidade += 0;
         } else if (diferUmid <= 10) {
-            percentualMortalidade += 0.05;
+            percentualMortalidade += 0.10;
         } else if (diferUmid <= 20) {
-            percentualMortalidade += 0.15;
+            percentualMortalidade += 0.20;
         } else {
-            percentualMortalidade += 0.3;
+            percentualMortalidade += 0.40;
         }
+
+        console.log(percentualMortalidade)
 
         //CALCULANDO A ESTIMATIVA DA QUANTIDADE DE AFETADOS DA ESPECIE DEVIDO A VARIAÇÃO DA TEMP E UMID
         var qtdDaEspecieAfetados = totalEspecie * percentualMortalidade;
@@ -130,16 +154,54 @@
         div_mensagem.innerHTML = `
             <h2>Estimativa de Impacto Financeiro</h2>
             O prejuízo financeiro estimado é de R$${prejuizoFinanceiro}. <br>
-            Durante ${idadeAnimal / 12} anos, cada animal exigiu um custo mensal de manutenção de R$${custoMensal} , totalizando R$${custoMensal * idadeAnimal} por indivíduo nesse período.
+            Durante ${idadeAnimal / 12} anos, cada animal exigiu um custo mensal de manutenção de R$${custoMensal} , totalizando R$${custoMensal * idadeAnimal} por indivíduo nesse período. <br>
             A taxa de mortalidade projetada foi de ${percentualMortalidade * 100}% , resultando em um número estimado de ${qtdDaEspecieAfetadosArredondado} animais da espécie ${especie} afetados, devido à variação de temperatura e umidade fora dos parâmetros ideais.
         `;
 
-        /*
-        Prejuízo ambiental
-considerando uma população total de 1000 indivíduos da espécie, essa estimativa representa uma perda de aproximadamente XX% do total.
 
-Caso a mortalidade tenha efeitos reprodutivos em casais, estima-se que XX filhotes deixaram de nascer, impactando ainda mais a conservação da espécie.
-        */
+        //CALCULANDO PREJUIZO AMBIENTAL
+        //PERDA DA ESPECIE EM PERCENTUAL
+        var percentualPerdaEspecie = qtdDaEspecieAfetadosArredondado / 1000 * 100;
+
+        //VERIFICANDO SE O REPTIL É ASSEXUADO OU SEXUAL, RESULTANDO QUANTOS FAZEM A REPRODUÇÃO
+        var qtdReproDaEspecie = 0;
+
+        if (tipoReproducao == 'Assexuada') {
+            qtdReproDaEspecie = totalEspecie;
+        } else {
+            if (totalEspecie % 2 == 1) {
+                qtdReproDaEspecie = (totalEspecie / 2) - 1;
+            } else {
+                qtdReproDaEspecie = totalEspecie / 2;
+            }
+        }
+
+        //CALCULANDO QUANTOS NOVOS REPTEIS FORAM GERADOS POR ANO
+        var qtdNovosRepAnual = qtdReproDaEspecie * qtdOvosEspecie * cicloRepro;
+
+        //CALCULANDO QUANTOS NOVOS REPTEIS FORAM PERDIDOS DEVIDO A MORTALIDADE
+        var qtdPerdaRepAnual = (qtdDaEspecieAfetados / totalEspecie) * qtdNovosRepAnual;
+
+        //ARREDONDANDO
+        qtdPerdaRepAnual = (qtdPerdaRepAnual + 0.5) - (qtdPerdaRepAnual + 0.5) % 1;
+
+        //CALCULANDO O TEMPO DE RECUPERAÇÃO DESSES REPTEIS PERDIDOS EM ANOS
+        var tempoRecuperacao = 5 / (qtdNovosRepAnual - qtdPerdaRepAnual);
+
+        //CALCULANDO ESTIMATIVA DE FILHOTES QUE DEIXARAM DE NASCER DEVIDO A MORTALIDADE
+        var qtdFilhotesDeixaramDeNascer = qtdOvosEspecie * qtdDaEspecieAfetadosArredondado * cicloRepro;
+
+
+        //EXIBINDO MENSAGEM DO PREJUIZO AMBIENTAL
+        div_mensagem.innerHTML += `
+            <br>
+            <h2>Estimativa do Impacto Ambiental</h2>
+            Considerando uma população total de 1000 indivíduos da espécie, essa estimativa representa uma perda de aproximadamente ${percentualPerdaEspecie}% do total. <br>
+            Caso a mortalidade tenha efeitos sobre a reprodução de casais ou de espécies assexuados, estima-se que ${qtdFilhotesDeixaramDeNascer} filhotes deixaram de nascer, impactando ainda mais a conservação da espécie. <br>
+            Com a estimativa de ${qtdDaEspecieAfetadosArredondado} répteis afetados pela mortalidade, a população terá uma perda de aproximadamente ${qtdPerdaRepAnual} novos répteis por ano. <br>
+            No entanto, considerando a taxa de reprodução dos répteis restantes, será necessário cerca de ${tempoRecuperacao} anos para relatar ${qtdDaEspecieAfetadosArredondado} dos répteis afetados e estabilizar a população novamente.
+        `;
+
     }
 
 </script>

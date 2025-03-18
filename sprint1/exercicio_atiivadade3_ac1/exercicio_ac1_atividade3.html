@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3 - AC1 - Automatização da Frota de Táxis de Agostinho (Carrara Drivers)</title>
+</head>
+
+<body>
+    <h1>Exercício 3 - AC1 - Automatização da Frota de Táxis de Agostinho (Carrara Drivers)</h1>
+
+    <div>
+        Informe o nome do Passageiro:
+        <input type="text" id="input_nomePass">
+        <br><br>
+
+        Informe a distância (em km) do local atual para o destino do passageiro:
+        <input type="text" id="input_distancia">
+        <br><br>
+
+        Informe o numero da bandeira da Corrida ('1', '2' ou '3'):
+        <input type="number" id="input_bandeira">
+        <br><br>
+
+        Informe o hórario da Corrida (em hrs inteiras):
+        <input type="text" id="input_horario">
+    </div>
+
+    <br>
+
+    <button onclick="calcularCorrida()">Calcular corrida</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function calcularCorrida() {
+        var nomePassageiro = input_nomePass.value;
+        var distancia = Number(input_distancia.value);
+        var bandeira = Number(input_bandeira.value);
+        var horario = Number(input_horario.value);
+
+        if (bandeira > 0) {
+            if (bandeira <= 3) {
+                if (horario >= 0) {
+                    if (horario <= 23) {
+                        //CALCULANDO ADICIONAL COM BASE NA BANDEIRA
+                        var percentualBandAdicional = 0;
+
+                        if (bandeira == 1) {
+                            if (horario <= 6) {
+                                percentualBandAdicional = 0.05;
+                            } else if (horario <= 12) {
+                                percentualBandAdicional = 0.10;
+                            } else {
+                                percentualBandAdicional = 0.15;
+                            }
+                        } else if (bandeira == 2) {
+                            if (horario <= 6) {
+                                percentualBandAdicional = 0.10;
+                            } else if (horario <= 12) {
+                                percentualBandAdicional = 0.20;
+                            } else {
+                                percentualBandAdicional = 0.30;
+                            }
+                        } else {
+                            if (horario <= 6) {
+                                percentualBandAdicional = 0.15;
+                            } else if (horario <= 12) {
+                                percentualBandAdicional = 0.30;
+                            } else {
+                                percentualBandAdicional = 0.45;
+                            }
+                        }
+
+                        //CALCULANDO VALOR TOTAL DA CORRIDA
+                        var valorNominalCorrida = distancia * 1.25
+                        var valorTotal = valorNominalCorrida + (valorNominalCorrida * percentualBandAdicional);
+
+                        //EXIBINDO RESULTADO MENSAGEM
+                        div_mensagem.innerHTML = `Olá ${nomePassageiro} Sua corrida, será na bandeira ${bandeira}, percorrerá ${distancia} km e o total da corrida será de ${valorTotal}`
+                    } else {
+                        alert('Hórario invalido!! Insira um novo hórario')
+                    }
+                } else {
+                    alert('Hórario invalido!! Insira um novo hórario')
+                }
+            } else {
+                alert('Número invalido da Bandeira!! Insira um novo número')
+            }
+        } else {
+            alert('Número invalido da Bandeira!! Insira um novo número')
+        }
+    }
+</script>
