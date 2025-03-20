@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4 - Análise de Parcelamento de Compra</title>
+</head>
+
+<body>
+    <h1>Exercicio 4 - Análise de Parcelamento de Compra</h1>
+
+    <div>
+        Insira o modo de pagamento dentre as seguintes opções:
+        <select id="select_modoPagamento">
+            <option>...</option>
+            <option value="dinheiro">Dinheiro</option>
+            <option value="cartaoDeb">Cartão de débito</option>
+            <option value="cartaoCred">Cartão de crédito</option>
+            <option value="boleto">boleto</option>
+        </select>
+    </div>
+
+    <br>
+
+    <button onclick="analisarCompra()">Analisar compra</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function analisarCompra(){
+        var metodoPagamento = select_modoPagamento.value;
+
+        if (metodoPagamento == 'dinheiro' || metodoPagamento == 'cartaoDeb'){
+            div_mensagem.innerHTML = 'Você terá que pagar a vista';
+        } else if (metodoPagamento == 'cartaoCred' || metodoPagamento == 'boleto') {
+            div_mensagem.innerHTML = 'Pagamento poderá ser parcelado';
+        }
+    }
+</script>

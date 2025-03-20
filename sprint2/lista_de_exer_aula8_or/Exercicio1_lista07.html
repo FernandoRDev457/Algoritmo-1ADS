@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1 - Juliane Joada e Suas Frutas Preferidas</title>
+</head>
+
+<body>
+    <h1>Exercício 1 - Juliane Joada e Suas Frutas Preferidas</h1>
+
+    <div>
+        Insira o nome da fruta que chegou na mesa:
+        <input type="text" id="input_fruta">
+    </div>
+
+    <br>
+
+    <button onclick="vaiComer()">Vai comer?</button>
+</body>
+
+</html>
+<script>
+    function vaiComer(){
+        var nomeFruta = input_fruta.value;
+
+        if (nomeFruta == 'uva' || nomeFruta == 'abacaxi'){
+            alert(`Sim, vai comer ${nomeFruta}`);
+        } else {
+            alert(`A fruta ${nomeFruta} ela não come`);
+        }
+    }
+</script>
