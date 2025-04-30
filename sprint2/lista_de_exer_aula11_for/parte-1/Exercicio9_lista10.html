@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9 - Pares no Intervalo</title>
+</head>
+
+<body>
+    <h1>Exercício 9 - Pares no Intervalo</h1>
+
+    <div>
+        Insira um valor Inicial:
+        <input type="text" id="input_valorInicial">
+        <br><br>
+
+        Insira um valor Final:
+        <input type="text" id="input_valorFinal">
+    </div>
+
+    <br>
+
+    <button onclick="analisarPares()">S2 Pares</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function analisarPares() {
+        var valorInicial = Number(input_valorInicial.value);
+        var valorFinal = Number(input_valorFinal.value);
+        var mensagem = ''
+
+        if (valorInicial < valorFinal) {
+            for (var contador = valorInicial; contador <= valorFinal; contador++) {
+                if (contador % 2 == 0) {
+                    mensagem += `${contador} <br>`
+                }
+            }
+
+            div_mensagem.innerHTML = mensagem
+        }
+
+    }
+</script>

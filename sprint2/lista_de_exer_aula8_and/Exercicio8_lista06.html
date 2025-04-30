@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8 - Login Seguro: Verificação em Duas Etapas!</title>
+</head>
+
+<body>
+    <h1>Exercício 8 - Login Seguro: Verificação em Duas Etapas!</h1>
+
+    <div>
+        Insira o seu login do usuário:
+        <input type="text" id="input_login">
+        <br><br>
+
+        Insira a sua senha:
+        <input type="password" id="input_senha">
+        <br><br>
+
+        Insira o código de Segurança:
+        <input type="text" id="input_codSeguranca">
+    </div>
+
+    <br>
+
+    <button onclick="logar()">Entrar</button>
+</body>
+
+</html>
+<script>
+    function logar() {
+        var usuario = input_login.value;
+        var senha = input_senha.value;
+        var codSeguranca = input_codSeguranca.value;
+
+        if (usuario == 'SPTech' && senha == 'digital' && codSeguranca == '123') {
+            alert('Usuário autenticado com sucesso');
+        } else {
+            alert('Falha de autenticação');
+        }
+    }
+</script>

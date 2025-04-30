@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número Aleatório - Exercício 9</title>
+</head>
+
+<body>
+    <h1>Número Aleatório - Exercício 9</h1>
+
+    <div>
+        <button onclick="gerarNota()">Gerar uma nota de aluno entre 3 e 10</button>
+        <p id="nota"><span id="dadoNota"></span></p>
+
+        <button onclick="gerarFrequencia()">Gerar uma frequência de aluno entre 50 e 100</button>
+        <p id="frequencia"><span id="dadoFrequencia"></span></p>
+
+        <button onclick="verAprovacao()">Ver Aprovação</button>
+
+        <br><br>
+        <div id="div_mensagem"></div>
+    </div>
+</body>
+
+</html>
+<script>
+    function gerarNota() {
+        var notaAleatorio = Math.random() * 8 + 3;
+
+        while (notaAleatorio > 10) {
+            notaAleatorio = Math.random() * 8 + 3;
+        }
+
+        nota.innerHTML = `A nota gerada foi: <span id="dadoNota">${notaAleatorio.toFixed(1)}</span>`
+    }
+
+    function gerarFrequencia() {
+        var frequenciaAleatorio = Math.random() * 51 + 50;
+
+        while (frequenciaAleatorio > 100) {
+            frequenciaAleatorio = Math.random() * 51 + 50;
+        }
+
+        frequencia.innerHTML = `A nota gerada foi: <span id="dadoFrequencia">${frequenciaAleatorio.toFixed(1)}</span>`
+    }
+
+    function verAprovacao() {
+        var valorNota = dadoNota.innerHTML;
+        var valorFrequencia = dadoFrequencia.innerHTML;
+        var mensagem = ''
+
+        if (valorNota != '' && valorFrequencia != '') {
+            if (valorNota >= 6 && valorFrequencia >= 75) {
+                mensagem = `Com nota ${valorNota} e frequência ${valorFrequencia}%, o aluno está Aprovado!`;
+            } else {
+                mensagem = `Com nota ${valorNota} e frequência ${valorFrequencia}%, o aluno está Reprovado!`;
+            }
+        } else {
+            alert('Gere uma nota ou frequencia para continuar!!');
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

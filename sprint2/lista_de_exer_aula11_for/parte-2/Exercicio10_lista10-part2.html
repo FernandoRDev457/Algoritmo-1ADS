@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10 - Fases da Vida</title>
+</head>
+
+<body>
+    <h1>Exercício 10 - Fases da Vida</h1>
+
+    <div>
+        Informe sua idada:
+        <input type="text" id="input_idade" oninput="calcularFasesDaVida()">
+    </div>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function calcularFasesDaVida() {
+        var idade = Number(input_idade.value);
+        var mensagem = 'Suas Fases da Vida: <br><br>'
+        var faseDaVida = '';
+
+        for (var contador = 0; contador <= idade; contador++) {
+            if (contador <= 4) {
+                faseDaVida = 'Primeira Infância';
+            } else if (contador <= 6) {
+                faseDaVida = 'Pré-Escolar';
+            } else if (contador <= 10) {
+                faseDaVida = 'Segunda Infância';
+            } else if (contador <= 18) {
+                faseDaVida = 'Adolescência';
+            } else if (contador <= 50) {
+                faseDaVida = 'Adulto';
+            } else if (contador <= 100) {
+                faseDaVida = 'Melhor Idade';
+            } else {
+                faseDaVida = 'Metusalém';
+            }
+
+            mensagem += `${contador} anos (${faseDaVida}) <br>`;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

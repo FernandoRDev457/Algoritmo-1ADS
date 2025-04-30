@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1</title>
+</head>
+
+<body>
+    <h1>Exercício 1</h1>
+
+    <div>
+        Informe quantos lanches você vai querer:
+        <input type="text" id="input_qtdLanches" oninput="addLanche()">
+        <br><br>
+
+        <div id="div_lanches"></div>
+
+        Informe a forma de pagamento:
+        <select id="select_pagamento">
+            <option value="" disabled selected>Selecione a forma de Pagamento...</option>
+            <option value="credito">Cartão de Crédito</option>
+            <option value="debito">Cartão de Débito</option>
+            <option value="pix">Pix</option>
+            <option value="cartaoEstudantil">Cartão Estudantil</option>
+        </select>
+    </div>
+
+    <br>
+
+    <button onclick="comprarLancher()">Comprar Lancher</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    var tentativasCompra = 0;
+
+    function addLanche() {
+        var mensagem = ''
+        var qtdLanches = input_qtdLanches.value;
+
+        for (var contador = 1; contador <= qtdLanches; contador++) {
+            mensagem += `
+            Informe o Lanche que você quer comprar: <br>
+            <select id="select_lanche">
+                <option value="" disabled selected>Opções de Lanche...</option>
+                <option value="Salgado">Salgado</option>
+                <option value="Doce">Doce</option>
+                <option value="Suco">Suco</option>
+                <option value="Combo Promo">Combo Promo (Salgado + Suco)</option>
+            </select>
+            <br><br>
+            `;
+        }
+
+        div_lanches.innerHTML = mensagem;
+    }
+
+    function comprarLancher() {
+        var lanche = select_lanche;
+        console.log(lanche);
+        var pagamento = select_pagamento.value;
+
+        var mensagem = '<h2> Pedido da Cantina </h2>';
+        var valorTotal = 0;
+        var precoLanche = 0;
+
+        if (lanche == 'Combo Promo' && pagamento != 'cartaoEstudantil') {
+            alert('Atencao! Forma de pagamento invalida para o Combo Promo.');
+            tentativasCompra--;
+
+            if (tentativasCompra == 0) {
+                alert('Pedido cancelado apos 3 tentativas. Por favor, selecione novamente.');
+
+                tentativasCompra = 3;
+
+                select_lanche.value = '';
+                select_pagamento.value = '';
+            }
+        } else {
+            alert('Pedido realizado com sucesso!');
+
+            for (var contador = 0; contador < lanche.length; contador++) {
+                var lancheSelecionado = lanche[contador].value;
+
+                if (lancheSelecionado == 'Salgado') {
+                    precoLanche = 5;
+                    valorTotal += precoLanche;
+                } else if (lancheSelecionado == 'Doce') {
+                    precoLanche = 4;
+                    valorTotal += precoLanche;
+                } else if (lancheSelecionado == 'Suco') {
+                    precoLanche = 3;
+                    valorTotal += precoLanche;
+                } else if (lancheSelecionado == 'Combo Promo') {
+                    precoLanche = 6;
+                    valorTotal += precoLanche;
+                }
+
+                mensagem += `Pedido ${contador + 1} - ${lancheSelecionado} - R$ ${precoLanche} <br>`
+            }
+
+            mensagem += `<br><br> Voce pediu ${contador} itens e o valor total e R$ ${valorTotal}.`
+            div_mensagem.innerHTML = mensagem;
+        }
+
+    }
+</script>

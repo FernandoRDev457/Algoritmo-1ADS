@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Aleatórios - Exercício 4</title>
+</head>
+
+<body>
+    <h1>Números Aleatórios - Exercício 4</h1>
+
+    <div>
+        <button onclick="sortearNotaAluno()">Sortear Nota para aluno</button>
+    </div>
+
+    <br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function sortearNotaAluno() {
+        var numeroRandom = Math.random();
+        var notaAleatoria = numeroRandom * 11;
+        var mensagem = '';
+
+        while(notaAleatoria > 10){
+            numeroRandom = Math.random();
+            notaAleatoria = numeroRandom * 11
+        }
+        
+        mensagem = `A nota sorteada é: ${notaAleatoria.toFixed(1)}`
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4 - Contador de Coca-Colas</title>
+</head>
+
+<body>
+    <h1>Exercício 4 - Contador de Coca-Colas</h1>
+
+    <div>
+        Informe quantas Coca-Cola's você acha que já bebeu na vida:
+        <input type="text" id="input_qtdCocaCola">
+    </div>
+    
+    <br>
+
+    <button onclick="verQuantidade()">Ver a quantidade</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function verQuantidade() {
+        var qtdCocaCola = Number(input_qtdCocaCola.value);
+        var mensagem = '';
+
+        for (var contador = 1; contador <= qtdCocaCola; contador++) {
+            mensagem += '<img src="https://i.pinimg.com/736x/d3/80/47/d3804717a775aebe1a551952fbf15f37.jpg" style="width: 150px; height: 150px;"/>';
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

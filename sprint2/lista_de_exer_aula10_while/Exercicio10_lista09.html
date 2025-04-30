@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10 - Corrida de Voltas</title>
+</head>
+
+<body>
+    <h1>Exercício 10 - Corrida de Voltas</h1>
+
+    <div>
+        Insira quantas voltas o carro dára na corrida:
+        <input type="text" id="input_voltas">
+    </div>
+
+    <br>
+
+    <button onclick="calcularVoltas()">Iniciar corrida!</button>
+
+    <br><br>
+    
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function calcularVoltas(){
+        var voltas = Number(input_voltas.value);
+        var contador = 0;
+        div_mensagem.innerHTML = ''
+
+        while(contador < voltas){
+            contador++
+
+            div_mensagem.innerHTML += `Carro dando a ${contador}° volta <br>`
+        }
+
+        div_mensagem.innerHTML += 'Corrida Finalizada!'
+    }
+</script>

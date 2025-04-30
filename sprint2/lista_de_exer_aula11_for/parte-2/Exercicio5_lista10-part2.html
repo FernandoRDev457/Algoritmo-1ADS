@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5 - Café com Leite na Medida Certa</title>
+</head>
+
+<body>
+    <h1>Exercício 5 - Café com Leite na Medida Certa</h1>
+
+    <div>
+        Informe a quantidade de xícaras de café com leite que você já tomou na vida: <br>
+        <input type="text" id="input_qtdCafeComLeite">
+    </div>
+
+    <br>
+
+    <button onclick="verQuantidade()">Ver a quantidade</button>
+
+    <br><br>
+
+    <div style="display: flex;">
+        <div id="div_mensagemCafe" style="max-width: 50%;"></div>
+        <div id="div_mensagemLeite" style="max-width: 50%;"></div>
+    </div>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function verQuantidade() {
+        var qtdCafeComLeite = Number(input_qtdCafeComLeite.value);
+        var msgCafe = '';
+        var msgLeite = '';
+
+        var mensagem = `Você consumou com ${qtdCafeComLeite} xícara(s) de Café com Leite,
+        ${qtdCafeComLeite * 2} colher(es) de Café em Pó e
+         ${qtdCafeComLeite} colher(es) de Leite em Pó`;
+
+        for (var contador = 1; contador <= qtdCafeComLeite; contador++) {
+            //CAFÉ IMAGEM - 2 VEZES
+            msgCafe += '<img src="https://png.pngtree.com/png-clipart/20240725/original/pngtree-coffee-ingredients-cocoa-powder-and-beans-in-a-wooden-spoon-png-image_15633399.png" style="width: 150px; height: 150px;"/>';
+            msgCafe += '<img src="https://png.pngtree.com/png-clipart/20240725/original/pngtree-coffee-ingredients-cocoa-powder-and-beans-in-a-wooden-spoon-png-image_15633399.png" style="width: 150px; height: 150px;"/>';
+            
+            //LEITE IMAGEM - 1 VEZ
+            msgLeite += '<img src="https://png.pngtree.com/png-vector/20250331/ourmid/pngtree-milk-powder-spoon-3d-illustration-with-realistic-design-for-baby-care-png-image_15907292.png" style="width: 150px; height: 150px;"/>';
+        }
+
+        div_mensagemCafe.innerHTML = msgCafe;
+        div_mensagemLeite.innerHTML = msgLeite;
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

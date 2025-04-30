@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 12 - Expressar Amor</title>
+</head>
+
+<body>
+    <h1>Exercício 12 - Expressar Amor</h1>
+
+    <div>
+        Informe o nome da pessoa que você mais ama na vida:
+        <Input type="text" id="input_nome"></Input>
+        <br><br>
+
+        Informe o quanto você o ama (em número inteiro):
+        <input type="text" id="input_quantoAma">
+    </div>
+
+    <br>
+
+    <button onclick="expressarAmor()">Expressar amor</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function expressarAmor() {
+        var nome = input_nome.value;
+        var quantoAma = Number(input_quantoAma.value);
+        var contador = 0;
+        var mensagem = '';
+
+        while (contador < quantoAma) {
+            contador++
+            mensagem += `${contador} - ${nome}, eu te amo! Sempre lembre disso! <br>`;
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

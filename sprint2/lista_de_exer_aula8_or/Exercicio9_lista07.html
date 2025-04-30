@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9 - Analisador de Compra: Escolhendo a Melhor TV Dentro do Orçamento</title>
+</head>
+
+<body>
+    <h1>Exercício 9 - Analisador de Compra: Escolhendo a Melhor TV Dentro do Orçamento</h1>
+
+    <div>
+        Insira a marca da TV:
+        <select id="select_marcaTV">
+            <option value="#" selected disabled>...</option>
+            <option value="Samsung">Samsung</option>
+            <option value="LG">LG</option>
+            <option value="Mondial">Mondial</option>
+            <option value="Britania">Britânia</option>
+        </select>
+        <br><br>
+
+        Insira o preço da TV:
+        <input type="text" id="input_preco">
+    </div>
+
+    <br>
+
+    <button onclick="analisarCompra()">Analisar compra</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function analisarCompra(){
+        var marca = select_marcaTV.value;
+        var preco = Number(input_preco.value);
+
+        if(preco < 800 || preco > 2000){
+            div_mensagem.innerHTML = 'TV fora da faixa de preço';
+
+            if(preco < 800){
+                div_mensagem.innerHTML += '<br>Preço baixo demais!';
+            } else {
+                div_mensagem.innerHTML += '<br>TV cara demais, infelizmente';
+            }
+        } else {
+            if(marca == 'Mondial' || marca == 'Britania'){
+                div_mensagem.innerHTML = 'Na faixa de preço, porém marca não confiável';
+            } else {
+                div_mensagem.innerHTML = 'Essa TV pode entrar na sua lista!';
+            }
+        }
+    }
+</script>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2 - Carona Compartilhada e Capacidade Flexível</title>
+</head>
+
+<body>
+    <h1>Exercício 2 - Carona Compartilhada e Capacidade Flexível</h1>
+
+    <div>
+        Informe quantos pessoas vão entrar no carro:
+        <input type="text" id="input_qtdPessoas">
+        <br><br>
+
+        Informe a capacidade de passageiros que cabem no veiculo:
+        <input type="text" id="input_capacidade">
+    </div>
+
+    <br>
+
+    <button onclick="pegarCarona()">#Partiu Carona</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function pegarCarona(){
+        var qtdPessoas = Number(input_qtdPessoas.value);
+        var capacidade = Number(input_capacidade.value);
+        var mensagem = 'Entrou o 1º passageiro (o motorista)<br>';
+        
+        for (var contador = 2; contador <= qtdPessoas + 1; contador++) {
+            if(contador <= capacidade){
+                mensagem += `Entrou o ${contador}º passageiro <br>`;
+            } else {
+                mensagem += `O ${contador}º passageiro terá que esperar!<br>`;
+            }
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

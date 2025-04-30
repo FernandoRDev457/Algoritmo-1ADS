@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 15 - Um elefante, incomoda muita gente...</title>
+</head>
+
+<body>
+    <h1>Exercício 15 - Um elefante, incomoda muita gente...</h1>
+
+    <div>
+        Informe a quantidade de Elefantes:
+        <input type="text" id="input_qtdElefantes">
+    </div>
+
+    <br>
+
+    <button onclick="calcularAtazadas()">Atazanar a médium</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function calcularAtazadas() {
+        var qtdElefantes = Number(input_qtdElefantes.value);
+        var contador = 1;
+        var mensagemGeral = ''
+        var mensagemElefante = 'incomodam'
+        
+        while (contador < qtdElefantes) {
+            var contadorIncomoda = 0;
+            contador++
+
+            mensagemGeral += '1 elefante incomodam muita gente! <br><br>';
+
+            if (contador > 1) {
+                mensagemGeral += `${contador} elefante`
+                while (contadorIncomoda < contador) {
+                    mensagemGeral += `, ${mensagemElefante}`;
+                    contadorIncomoda++;
+                }
+                mensagemGeral += ', muito mais! <br><br>'
+
+            }
+
+        }
+
+        div_mensagem.innerHTML = mensagemGeral;
+    }
+</script>

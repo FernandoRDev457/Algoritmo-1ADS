@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2 - Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</title>
+</head>
+
+<body>
+    <h1>Exercício 2 - Simulador de Preferências de Compras: Será que Robervaldo Gostaria?</h1>
+
+    <div>
+        Insira o tamanho da tela do celular encontrado:
+        <input type="text" id="input_tamanhoTela">
+        <br><br>
+
+        Selecione a cor do celular encontrado, dentre as opções:
+        <select id="select_corCelular">
+            <option value="#" selected disabled>...</option>
+            <option value="preto">Preto</option>
+            <option value="prata">Prata</option>
+            <option value="azul">Azul</option>
+            <option value="vermelho">Vermelho</option>
+        </select>
+    </div>
+
+    <br>
+
+    <button onclick="avaliarGosto()">Será que ele gosta?</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function avaliarGosto() {
+        var tamanhoTela = input_tamanhoTela.value
+        var corCelular = select_corCelular.value
+
+        if (tamanhoTela > 6.5 && (corCelular == 'preto' || corCelular == 'prata')) {
+            div_mensagem.innerHTML = '<img src="https://img.freepik.com/fotos-gratis/foto-de-um-homem-maduro-e-feliz-sentindo-se-muito-feliz-e-animado-depois-de-ganhar-na-loteria-exclamando-alegremente-cerrando-os-punhos-pessoas-sorte-sucesso-empolgacao-vitoria-vitoria-e-boa-fortuna_343059-1750.jpg">';
+        } else {
+            div_mensagem.innerHTML = '<img src="https://img.freepik.com/fotos-gratis/homem-senior-comemorando-seu-aniversario_23-2149383254.jpg">';
+        }
+    }
+</script>

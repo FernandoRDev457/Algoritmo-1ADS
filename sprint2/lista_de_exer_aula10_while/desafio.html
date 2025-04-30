@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doceria Dori Valdossin</title>
+</head>
+
+<body>
+    <h1>Doceria Dori Valdossin</h1>
+
+    <div>
+        Insira a quantidade Macarons que foi vendido:
+        <input type="text" id="input_macarons">
+        <br>
+        Insira o preço da unidade do doce:
+        <input type="text" id="input_precoUniMacarons">
+        <br><br>
+
+
+        Insira a quantidade Brigadeiro que foi vendido:
+        <input type="text" id="input_brigadeiro">
+        <br>
+        Insira o preço da unidade do doce:
+        <input type="text" id="input_precoUniBrigadeiro">
+        <br><br>
+
+
+        Insira a quantidade Cupcakes que foi vendido:
+        <input type="text" id="input_cupcakes">
+        <br>
+        Insira o preço da unidade do doce:
+        <input type="text" id="input_precoUniCupcakes">
+        <br><br>
+
+
+        Insira a quantidade Cheesecakes que foi vendido:
+        <input type="text" id="input_cheese">
+        <br>
+        Insira o preço da unidade do doce:
+        <input type="text" id="input_precoUniCheese">
+    </div>
+
+    <br>
+
+    <button onclick="verificarVendas()">Verificar Vendas</button>
+
+    <div id="div_mensagem"></div>
+
+
+</body>
+
+</html>
+<script>
+    function verificarVendas() {
+        var macarons = Number(input_macarons.value);
+        var precoUniMacarons = Number(input_precoUniMacarons.value);
+
+        var brigadeiro = Number(input_brigadeiro.value);
+        var precoUniBrigadeiro = Number(input_precoUniBrigadeiro.value);
+
+        var cupcakes = Number(input_cupcakes.value);
+        var precoUniCupcakes = Number(input_precoUniCupcakes.value);
+
+        var cheese = Number(input_cheese.value);
+        var precoUniCheese = Number(input_precoUniCheese.value);
+
+        var contadorMaca = macarons;
+        var contadorBriga = brigadeiro;
+        var contadorCup = cupcakes;
+        var contadorCheesse = cheese;
+
+        if (macarons < 0 || precoUniMacarons < 0 || brigadeiro < 0 || precoUniBrigadeiro < 0 || cupcakes < 0 || precoUniCupcakes < 0 || cheese < 0 || precoUniCheese < 0){
+            div_mensagem.innerHTML = '<br> Valor Inválido!! São aceito apenas valores positivos';
+        } 
+        else {
+            var qtdTotal = macarons + brigadeiro + cupcakes + cheese;
+            var valorTotal = (macarons * precoUniMacarons) + (brigadeiro * precoUniBrigadeiro) + (cupcakes * precoUniCupcakes) + (cheese * precoUniCheese);
+            var contador = 0;
+            var mensagem = '';
+
+            mensagem = '<h3>Relatório de Vendas</h3>';
+
+            while (contador < qtdTotal) {
+                contador++
+                if (contadorMaca != 0) {
+                    mensagem += `<br> <span>Venda ${contador} - <img style="width:60px; height: 60px" src="https://lovefoodfeed.com/wp-content/uploads/2023/01/Macarons-px-1200-01-1.jpg"> - R$${precoUniMacarons}</span>`;
+                    contadorMaca--;
+                } else if (contadorBriga != 0) {
+                    mensagem += `<br> <span>Venda ${contador} - <img style="width:60px; height: 60px" src="https://i.panelinha.com.br/i1/228-q-2859-brigadeiro.webp"> - R$${precoUniBrigadeiro}</span>`;
+                    contadorBriga--;
+                } else if (contadorCup != 0) {
+                    mensagem += `<br> <span>Venda ${contador} - <img style="width:60px; height: 60px" src="https://acdn-us.mitiendanube.com/stores/124/083/products/cupcakes-cupcakedecorado1-4a78e9cedf0a5c783816139237197788-640-0.jpg"> - R$${precoUniCupcakes}</span>`;
+                    contadorCup--;
+                } else if (contadorCheesse != 0) {
+                    mensagem += `<br> <span>Venda ${contador} - <img style="width:60px; height: 60px" src="https://cozinhaglobo.com.br/wp-content/uploads/2023/06/receita-de-cheesecake-de-morango-1024x768.jpg"> - R$${precoUniCheese}</span> <br>`;
+                    contadorCheesse--;
+                }
+
+            }
+
+            mensagem += `<br> Com a quantidade de ${macarons} Macarons, ${brigadeiro} Brigadeiros, ${cupcakes} Cupcakes e ${cheese} Cheesecakes, a venda totalizará R$${valorTotal}`
+
+            div_mensagem.innerHTML = mensagem;
+        }
+    }
+</script>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 6 - Múltiplos de 5</title>
+</head>
+
+<body>
+    <h1>Exercício 6 - Múltiplos de 5</h1>
+
+    <div>
+        Insira um número da sua escolha, entre (20 e 100): <br>
+        <input type="text" id="input_num">
+    </div>
+
+    <br>
+
+    <button onclick="calcularMultiplos()">Adoro Múltiplos de 5</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function calcularMultiplos() {
+        var num = Number(input_num.value);
+        var contador = 0;
+        var multiplo = 0;
+        div_mensagem.innerHTML = ''
+
+        if (num >= 20 && num <= 100) {
+
+            while (multiplo < num) {
+                multiplo = 5 * contador;
+
+                if (multiplo <= num) {
+                    div_mensagem.innerHTML += `${multiplo} <br>`;
+                }
+
+                contador++
+            }
+        } else {
+            alert('Insira um número válido que seja entre 20 a 100!!');
+        }
+    }
+</script>

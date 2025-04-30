@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Aleatórios - Exercício 1</title>
+</head>
+
+<body>
+    <h1>Números Aleatórios - Exercício 1</h1>
+
+    <div>
+        <button onclick="sortear()">Sortear</button>
+    </div>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function sortear() {
+        var numeroRandom = Math.random();
+        var mensagem = '';
+
+        mensagem += `${numeroRandom} <br>`;
+
+        if(numeroRandom > 0.5){
+            mensagem += 'Eu arredondaria para 1';
+        } else {
+            mensagem += 'Eu arredondaria para 0'
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

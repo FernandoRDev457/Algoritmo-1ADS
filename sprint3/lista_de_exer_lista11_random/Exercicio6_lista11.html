@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Número Aleatórios - Exercício 6</title>
+</head>
+
+<body>
+    <h1>Número Aleatórios - Exercício 6</h1>
+
+    <div>
+        <button onclick="sortearMomentoDia()">Sortear momento do dia</button>
+    </div>
+
+    <br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function sortearMomentoDia(){
+        var numeroAleatorio = Math.random();
+        var momentoDia = parseInt(numeroAleatorio * 24);
+        var mensagem = ''
+
+        if(momentoDia < 12){
+            mensagem = `Bom dia, flor do dia, São ${momentoDia}hrs!`
+        } else if (momentoDia < 18){
+            mensagem = `Bom tarde, já vai tarde!, São ${momentoDia}hrs!`
+        } else {
+            mensagem = `Bom noite, durma bem!, São ${momentoDia}hrs!`
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

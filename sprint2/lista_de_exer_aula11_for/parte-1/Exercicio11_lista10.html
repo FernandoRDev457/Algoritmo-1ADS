@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 11 - Tabuada Colorida</title>
+</head>
+
+<body>
+    <h1>Exercício 11 - Tabuada Colorida</h1>
+
+    <div>
+        Selecione o número que você quer ver a tabuada na tela: <br>
+        <select id="select_numTabuada">
+            <option value="#" disabled selected>Selecione um número...</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+            <option>7</option>
+            <option>8</option>
+            <option>9</option>
+        </select>
+        <br><br>
+
+        Insira até que número você quer a exibição da tabuada: <br>
+        <input type="text" id="input_limiteTabuada">
+    </div>
+
+    <br>
+
+    <button onclick="verTabuada()">Ver Tabuada</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function verTabuada() {
+        var numTabuada = Number(select_numTabuada.value);
+        var limiteTabuada = Number(input_limiteTabuada.value);
+        var mensagem = `<h3>A tabuada do ${numTabuada} é :</h3>`
+
+        for (let contador = 1; contador <= limiteTabuada; contador++) {
+            if (contador % 2 == 0) {
+                mensagem += '<span style="color: blue">'
+            } else {
+                mensagem += '<span style="color: red">'
+            }
+            mensagem += `${numTabuada} x ${contador} = ${numTabuada * contador}</span> <br>`;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

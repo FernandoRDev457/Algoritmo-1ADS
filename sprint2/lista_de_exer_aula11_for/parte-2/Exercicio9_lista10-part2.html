@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9 - FizzBuzz</title>
+</head>
+
+<body>
+    <h1>Exercício 9 - FizzBuzz</h1>
+
+    <button onclick="verFizzBuzz()">FizzBuzz</button>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function verFizzBuzz() {
+        var mensagem = 'Iniciando contagem... <br><br>';
+
+        for (var contador = 1; contador <= 100; contador++) {
+            if (contador % 3 == 0 && contador % 5 == 0) {
+                resultado = 'FizzBuzz';
+            } else if (contador % 3 == 0) {
+                resultado = 'Fizz'
+            } else if (contador % 5 == 0) {
+                resultado = 'Buzz'
+            } else {
+                resultado = contador;
+            }
+            mensagem += `${resultado} <br>`;
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

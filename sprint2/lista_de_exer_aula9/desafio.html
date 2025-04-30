@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Validação de Entrada no Parque de Diversão</title>
+</head>
+
+<body>
+    <h1>Sistema de Validação de Entrada no Parque de Diversão</h1>
+
+    <div>
+        Insira o nome:
+        <input type="text" id="input_nome">
+        <br><br>
+
+        Insira a altura (em metros):
+        <input type="text" id="input_altura">
+        <br><br>
+
+        Insira a idade:
+        <input type="text" id="input_idade">
+        <br><br>
+
+        Selecione se você está acompanhado:
+        <select id="select_acompanhante">
+            <option value="#" disabled selected>...</option>
+            <option value="sim">Sim</option>
+            <option value="nao">Não</option>
+        </select>
+    </div>
+
+    <br>
+
+    <button onclick="validarEntrada()">Validar Entrada</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function validarEntrada() {
+        var nome = input_nome.value;
+        var altura = Number(input_altura.value);
+        var idade = Number(input_idade.value);
+        var acompanhante = select_acompanhante.value;
+
+        if (altura >= 1.50 && (idade >= 18 || acompanhante == 'sim')) {
+            div_mensagem.innerHTML = 'Entrada Liberada!! Pode curtir o Parque.';
+        } else {
+            div_mensagem.innerHTML = 'Entrada Negada!! Você não atende os requisitos.';
+        }
+    }
+</script>

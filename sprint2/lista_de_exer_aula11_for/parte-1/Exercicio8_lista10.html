@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 8 - Papagaio Falante</title>
+</head>
+
+<body>
+    <h1>Exercício 8 - Papagaio Falante</h1>
+
+    <div>
+        Insira um número de sua escolha:
+        <input type="text" id="input_num">
+        <br><br>
+
+        Insira uma frase de sua escolha:
+        <input type="text" id="input_frase">
+    </div>
+
+    <br>
+
+    <button onclick="papagaio()">Papagaio</button>
+</body>
+
+</html>
+
+<script>
+    function papagaio() {
+        var num = Number(input_num.value);
+        var frase = input_frase.value;
+
+        for (var contador = 0; contador < num; contador++) {
+            var msg = '';
+
+            for (var contFrase = 0; contFrase < num; contFrase++) {
+                msg += `${frase}\n`;
+            }
+            alert(`${msg}`);
+        }
+    }
+</script>

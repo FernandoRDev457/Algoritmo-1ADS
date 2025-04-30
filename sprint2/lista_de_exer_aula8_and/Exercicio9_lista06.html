@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 9 - Seleção de Pilotos: Você Tem a Altura Ideal?</title>
+</head>
+
+<body>
+    <h1>Exercício 9 - Seleção de Pilotos: Você Tem a Altura Ideal?</h1>
+
+    <div>
+        <h3>Parâmetros:</h3>
+
+        Informe a altura inicial para os pilotos do processo seletivo (Ex: 1.90):
+        <input type="text" id="input_alturaInicial">
+        <br>
+
+        Informe a altura final para os pilotos do processo seletivo (Ex: 1.90):
+        <input type="text" id="input_alturaFinal">
+
+        <br><br>
+
+        Insira o nome do candidato a piloto:
+        <input type="text" id="input_nomeCandidato">
+        <br>
+
+        Insira a altura do candidato a piloto (Ex: 1.90):
+        <input type="text" id="input_alturaCandidato">
+    </div>
+
+    <br>
+
+    <button onclick="verificarCandidato()">Verificar Candidato</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function verificarCandidato() {
+        var alturaInicial = Number(input_alturaInicial.value);
+        var alturaFinal = Number(input_alturaFinal.value);
+
+        var nomeCandidato = input_nomeCandidato.value;
+        var alturaCandidato = input_alturaCandidato.value;
+
+        if (alturaInicial > 1 && alturaFinal > alturaInicial) {
+            if (alturaCandidato >= alturaInicial && alturaCandidato <= alturaFinal) {
+                div_mensagem.innerHTML = `O candidato ${nomeCandidato}, com altura de ${alturaCandidato} metros, participará do processo de seleção de piloto`;
+            } else {
+                div_mensagem.innerHTML = `Infelizmente, o candidato ${nomeCandidato}, com altura de ${alturaCandidato} metros, não atende os requisitos da seleção`;
+            }
+        } else {
+            alert('Insira uma altura Inicial maior que a Final');
+        }
+    }
+</script>

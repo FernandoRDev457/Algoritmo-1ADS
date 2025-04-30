@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 3 - Frase Numerada</title>
+</head>
+
+<body>
+    <h1>Exercício 3 - Frase Numerada</h1>
+
+
+    <div>
+        Insira algo sobre a matéria de Algoritmos:
+        <input type="text" id="input_mensagem">
+    </div>
+    <br>
+
+    <button onclick="repetirFrase()">Diga algo sobre a matéria de Algoritmos</button>
+    
+    <br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    function repetirFrase() {
+        var frase = input_mensagem.value;
+        var mensagem = ''
+
+        for (var contador = 1; contador <= 7; contador++) {
+            mensagem += `<br> ${contador}. ${frase}`;            
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

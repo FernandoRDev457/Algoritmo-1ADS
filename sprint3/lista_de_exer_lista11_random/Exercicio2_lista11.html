@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Números Aleatórios - Exercício 2</title>
+</head>
+
+<body>
+    <h1>Números Aleatórios - Exercício 2</h1>
+
+    <div>
+        <button onclick="sortearTime()">Sortear time</button>
+    </div>
+
+    <br>
+    <div id="div_escudo"></div>
+</body>
+
+</html>
+
+<script>
+    function sortearTime() {
+        var numeroRandom = Math.random();
+        var numTime = parseInt(numeroRandom * 5);
+        var mensagem = '';
+
+        if (numTime == 0) {
+            mensagem = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Palmeiras_logo.svg/1024px-Palmeiras_logo.svg.png" style="height:150px; width:150px;" />'
+        } else if (numTime == 1) {
+            mensagem = '<img src="https://a-static.mlcdn.com.br/1500x1500/molde-abs-15mm-time-brasao-escudo-corinthians-farias/fariasformasemoldes/fedacd2467f911efa23a4201ac18501b/6a2dd0833ef0752346b1e1171aedc8a5.jpeg" style="height:150px; width:150px;" />'
+        } else if (numTime == 2) {
+            mensagem = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRODvqksjkqMma8Jt6htFS3uVtM4ouR1BsaKQ&s" style="height:150px; width:150px;" />'
+        } else {
+            mensagem = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8IRIu22S4MZjEfiE9HlNxNI5VK5u1zoPt4A&s" style="height:150px; width:150px;" />'
+        }
+
+        div_escudo.innerHTML = mensagem;
+    }
+</script>

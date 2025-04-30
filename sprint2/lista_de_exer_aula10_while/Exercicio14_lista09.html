@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14 - Treino de Musculação</title>
+</head>
+
+<body>
+    <h1>Exercício 14 - Treino de Musculação</h1>
+
+    <div>
+        Informe de quantos em quantos dias você faz musculação normalmente: <br>
+        <input type="text" id="input_diasMusculacao">
+    </div>
+
+    <br>
+
+    <button onclick="exibirRotina()">Exibir rotina mensal</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function exibirRotina() {
+        var diasMusculacao = Number(input_diasMusculacao.value) + 1;
+        var contador = 1;
+        var mensagem = 'Dia 1 - Musculação';
+
+
+        while (contador < 30){
+            contador++;
+
+            if(contador == diasMusculacao){
+                mensagem += `Dia ${diasMusculacao} - Musculação <br>`;
+                diasMusculacao += 5;
+            } else {
+                mensagem += `Dia ${contador} - Comer, dormir etc <br>`;
+            }
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

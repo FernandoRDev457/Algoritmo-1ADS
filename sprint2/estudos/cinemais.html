@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CineMais - Sistema de Compra de Ingressos</h1>
+
+    <div>
+        Informe o Filme que desejam assistir:
+        <select id="select_nomeFilme">
+            <option value="" disabled selected>Selecione alguns dos Filmes em Cartas...</option>
+            <option>Um Filme Minecraft</option>
+            <option>Sonic 3 - O Filme</option>
+            <option>Branca de Neve</option>
+        </select>
+        <br><br>
+
+        Selecione o tipo do Ingresso 1:
+        <select id="select_ingresso1">
+            <option value="" disabled selected>Selecione o Tipo do Ingresso</option>
+            <option value="meia">Meia-Entrada</option>
+            <option value="inteira">Entrada Inteira</option>
+            <option value="inteiraSantander">Entrada Inteira com Desconto Santander</option>
+        </select>
+        <br><br>
+
+        Selecione o tipo do Ingresso 2:
+        <select id="select_ingresso2">
+            <option value="" disabled selected>Selecione o Tipo do Ingresso</option>
+            <option value="meia">Meia-Entrada</option>
+            <option value="inteira">Entrada Inteira</option>
+            <option value="inteiraSantander">Entrada Inteira com Desconto Santander</option>
+        </select>
+        <br><br>
+
+        Selecione o tipo do Ingresso 3:
+        <select id="select_ingresso3">
+            <option value="" disabled selected>Selecione o Tipo do Ingresso</option>
+            <option value="meia">Meia-Entrada</option>
+            <option value="inteira">Entrada Inteira</option>
+            <option value="inteiraSantander">Entrada Inteira com Desconto Santander</option>
+        </select>
+        <br><br>
+
+        Selecione o tipo do Ingresso 4:
+        <select id="select_ingresso4">
+            <option value="" disabled selected>Selecione o Tipo do Ingresso</option>
+            <option value="meia">Meia-Entrada</option>
+            <option value="inteira">Entrada Inteira</option>
+            <option value="inteiraSantander">Entrada Inteira com Desconto Santander</option>
+        </select>
+        <br><br>
+
+        Selecione o tipo do Ingresso 5:
+        <select id="select_ingresso5">
+            <option value="" disabled selected>Selecione o Tipo do Ingresso</option>
+            <option value="meia">Meia-Entrada</option>
+            <option value="inteira">Entrada Inteira</option>
+            <option value="inteiraSantander">Entrada Inteira com Desconto Santander</option>
+        </select>
+        <br><br>
+
+        Seleciona a forma de Pagamento:
+        <select id="select_formaPagamento">
+            <option value="" disabled selected>Selecione o Tipo do Ingresso</option>
+            <option value="debito">Cartão de Débito</option>
+            <option value="credito">Cartão de Crédito</option>
+            <option value="creditoSantander">Cartão de Crédito Santander</option>
+            <option value="pix">PIX</option>
+            <option value="dinheiro">Dinheiro</option>
+        </select>
+        <br><br>
+    </div>
+
+    <br>
+
+    <button onclick="comprarIngressos()">Comprar Ingressos</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    var tentativasCompra = 3;
+
+    function comprarIngressos() {
+        //DECLARAÇÃO DAS VARIAREIS DOS INPUTS
+        var nomeFilme = select_nomeFilme.value;
+        var ingresso1 = select_ingresso1.value;
+        var ingresso2 = select_ingresso2.value;
+        var ingresso3 = select_ingresso3.value;
+        var ingresso4 = select_ingresso4.value;
+        var ingresso5 = select_ingresso5.value;
+        var formaPagamento = select_formaPagamento.value;
+
+
+        var mensagem = '<h2>Nota Fiscal - Ingressos</h2>'
+        var valorTotal = 0;
+        var ingressoSelecionado = 0;
+        var qtdIngresso = 0;
+
+        if ((ingresso1 == 'inteiraSantander' || ingresso2 == 'inteiraSantander' || ingresso3 == 'inteiraSantander' || ingresso4 == 'inteiraSantander' || ingresso5 == 'inteiraSantander') && formaPagamento != 'creditoSantander' && tentativasCompra != 0) {
+            alert('Atenção! A forma de pagamento escolhida não é válida para o ingresso com desconto Santander.');
+            tentativasCompra--;
+
+            if (tentativasCompra == 0) {
+                alert('Compra cancelada após 3 tentativas. Por favor, insira novamente.');
+                tentativasCompra = 3;
+
+                //SELECTS LIMPOS
+                select_nomeFilme.value = '';
+                select_ingresso1.value = '';
+                select_ingresso2.value = '';
+                select_ingresso3.value = '';
+                select_ingresso4.value = '';
+                select_ingresso5.value = '';
+                select_formaPagamento.value = '';
+            }
+        } else {
+            for (var contador = 1; contador <= 5; contador++) {
+                //PEGANDO O INGRESSO SELECIONANDO EM ORDEM
+                if (contador == 1) {
+                    ingressoSelecionado = ingresso1;
+                } else if (contador == 2) {
+                    ingressoSelecionado = ingresso2;
+                } else if (contador == 3) {
+                    ingressoSelecionado = ingresso3;
+                } else if (contador == 4) {
+                    ingressoSelecionado = ingresso4;
+                } else {
+                    ingressoSelecionado = ingresso5;
+                }
+
+                if (ingressoSelecionado == 'meia') {
+                    valorTotal += 22.20;
+                    mensagem += `Ingresso ${contador} - Tipo: Meia-Entrada - R$22.20 - Filme: ${nomeFilme} <br>`
+                    qtdIngresso++;
+                } else if (ingressoSelecionado == 'inteira') {
+                    valorTotal += 43.30;
+                    mensagem += `Ingresso ${contador} - Tipo: Entrada Inteira - R$43.30 - Filme: ${nomeFilme} <br>`
+                    qtdIngresso++;
+                } else if (ingressoSelecionado == 'inteiraSantander') {
+                    valorTotal += 43.30 * 0.60;
+                    mensagem += `Ingresso ${contador} - Tipo: Entrada Inteira com Desconto Santander - ${43.30 * 0.75} - Filme: ${nomeFilme} <br>`
+                    qtdIngresso++;
+                }
+            }
+
+            if(qtdIngresso == 5){
+                valorTotal = valorTotal - (valorTotal * 0.20)
+            }
+            mensagem += `<br><br> Com a compra de ${qtdIngresso} ingressos para o filme ${nomeFilme}, o valor total da compra é R$ ${valorTotal}`
+            div_mensagem.innerHTML = mensagem;
+        }
+
+    }
+
+</script>

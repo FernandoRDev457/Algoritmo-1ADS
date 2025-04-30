@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13 - É tri/penta!</title>
+</head>
+
+<body>
+    <h1>Exercício 13 - É tri/penta!</h1>
+
+    <div>
+        Insira o valor inicial:
+        <input type="text" id="input_valorInicial">
+        <br><br>
+
+        Insira o valor Final:
+        <input type="text" id="input_valorFinal">
+    </div>
+
+    <br>
+
+    <button onclick="exibir()">Curto 3 e 5!</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    function exibir() {
+        var valorInicial = Number(input_valorInicial.value);
+        var valorFinal = Number(input_valorFinal.value);
+        var contador = valorInicial;
+        var mensagem = ''
+
+        while (contador <= valorFinal) {
+            if (contador % 3 == 0 && contador % 5 == 0) {
+                mensagem += 'É TRI! É PENTA! <br>';
+            } else if (contador % 5 == 0) {
+                mensagem += 'É PENTA! <br>';
+            } else if (contador % 3 == 0){
+                mensagem += 'É TRI! <br>';
+            } else {
+                mensagem += `${contador} <br>`;
+            }
+
+            contador++
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>
