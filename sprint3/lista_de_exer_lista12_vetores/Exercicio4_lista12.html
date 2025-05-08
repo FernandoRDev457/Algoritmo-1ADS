@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4 - Top Filmes Favoritos: Do Mais Amado ao Menos</title>
+</head>
+
+<body>
+    <h1>Exercício 4 - Top Filmes Favoritos: Do Mais Amado ao Menos</h1>
+
+    <div>
+        Cadastre o nome dos seus filmes que mais gosta (onde o primeiro é o que se mais gosta): <br>
+        <input type="text" id="input_filme">
+        <button onclick="cadastrarFilme()">Cadastrar Filme</button>
+    </div>
+
+    <br>
+
+    <button onclick="acessarListaFavoritos()">Ver Favoritos</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var arrayFilmes = []
+
+    function cadastrarFilme(){
+        var filme = input_filme.value;
+        div_mensagem.innerHTML = '';
+
+        arrayFilmes.push(filme);
+        alert('Filme Cadastrado com Sucesso!');
+    }
+
+    function acessarListaFavoritos(){
+        var mensagem = 'Seus Filmes Favoritos são: <br>';
+
+        if(arrayFilmes.length != 0){
+            for (var i = 0; i < arrayFilmes.length; i++) {
+                mensagem += `${i+1}° - ${arrayFilmes[i]}<br>`;
+            }
+
+            mensagem += 
+            `Total: ${arrayFilmes.length} Filme(s) <br><br>
+            O filme que você mais gosta é ${arrayFilmes[0]}. <br>
+            E desses, o que menos gosta é ${arrayFilmes[arrayFilmes.length - 1]}`;
+        } else {
+            mensagem = 'Você não cadastrou ainda nenhum filme!'
+        }
+
+        div_mensagem.innerHTML = mensagem
+    }
+</script>

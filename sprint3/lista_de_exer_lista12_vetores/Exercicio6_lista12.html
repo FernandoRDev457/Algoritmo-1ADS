@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exercício 6 - Lista Viva de Filmes Favoritos</title>
+    </head>
+
+<body>
+    <h1>Exercício 6 - Lista Viva de Filmes Favoritos</h1>
+
+    <div>
+        Cadastre o nome dos seus filmes que você mais gosta: <br>
+        <input type="text" id="input_filme">
+        <button onclick="cadastrarFilme()">Cadastrar</button>
+    </div>
+
+    <br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var arrayFilmes = []
+
+    function cadastrarFilme() {
+        var filme = input_filme.value;
+        var mensagem = 'Lista dos Filmes Favoritos: <br><br>';
+
+        arrayFilmes.push(filme);
+        alert('Filme Cadastrado com Sucesso!');
+
+        for (var i = 0; i < arrayFilmes.length; i++) {
+            mensagem += `${i + 1}° Filme - ${arrayFilmes[i]} <br>`
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+
+</script>

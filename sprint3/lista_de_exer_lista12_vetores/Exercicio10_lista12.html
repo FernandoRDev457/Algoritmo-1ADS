@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 10 - Registro de Linhas de Ônibus com Pesquisa de Histórico</title>
+</head>
+
+<body>
+    <h1>Exercício 10 - Registro de Linhas de Ônibus com Pesquisa de Histórico</h1>
+
+    <div>
+        Cadastre o nome das linhas de ônibus que você pegou durante a semana: <br>
+        <input type="text" id="input_linha">
+        <button onclick="gravarBusao()">Gravar Busão</button>
+    </div>
+
+    <br>
+
+    <div id="div_mensagem_linhas"></div>
+
+    <br>
+    <div>
+        Pesquisa pelo nome de alguma linha: <br>
+        <input type="text" id="input_search">
+        <button onclick="pesquisar()">Pesquisar</button>
+    </div>
+
+    <br>
+
+    <div id="div_mensagem_search"></div>
+</body>
+
+</html>
+<script>
+    var arrayLinhasOnibus = [];
+
+    function gravarBusao() {
+        var linha = input_linha.value;
+        var mensagem = 'Lista das Linhas Registradas: <br>';
+
+        arrayLinhasOnibus.push(linha);
+        alert('Linha de Ônibus gravada com sucesso!');
+
+        for (var i = arrayLinhasOnibus.length - 1; i >= 0; i--) {
+            mensagem += `Linha - ${arrayLinhasOnibus[i]} <br>`;
+        }
+
+        div_mensagem_linhas.innerHTML = mensagem;
+    }
+
+    function pesquisar() {
+        var search = input_search.value;
+        var mensagem = '';
+
+        var qtd = 0;
+        var ordemRepeticoes = '';
+
+        for (var i = 0; i < arrayLinhasOnibus.length; i++) {
+            if (search == arrayLinhasOnibus[i]) {
+                qtd++;
+                ordemRepeticoes += `${i + 1}, `
+            }
+        }
+
+        if (qtd == 0) {
+            mensagem = 'Você nunca pegou essa linha.';
+        } else {
+            mensagem = `Você já pegou essa linha ${qtd} vezes, nessa ordem: ${ordemRepeticoes}`;
+        }
+
+        div_mensagem_search.innerHTML = mensagem;
+
+
+    }
+</script>

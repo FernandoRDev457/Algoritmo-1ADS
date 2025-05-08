@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 9 - Cadastro de Projetos e Classificação de Experiência Profissional</title>
+</head>
+
+<body>
+    <h1>Exercicio 9 - Cadastro de Projetos e Classificação de Experiência Profissional</h1>
+
+    <div>
+        Cadastre o nome de cada projeto que você ja criou na vida: <br>
+        <input type="text" id="input_projeto">
+        <button onclick="registrarProjeto()">Registrar Projeto</button>
+        <br>
+        <div id="div_mensagem_status"></div>
+        <br>
+    </div>
+
+    <br>
+    <button onclick="verListaProjeto()">Mostrar Projetos</button>
+    <div id="div_mensagem_projetos"></div>
+</body>
+
+</html>
+<script>
+    var arrayProjeto = []
+
+    function registrarProjeto() {
+        var projeto = input_projeto.value;
+        var mensagem = '';
+
+        arrayProjeto.push(projeto);
+        alert('Projeto cadastrado com Sucesso!')
+
+        var nivel;
+        if (arrayProjeto.length <= 4) {
+            nivel = 'Junior';
+        } else if (arrayProjeto.length <= 12) {
+            nivel = 'Pleno';
+        } else {
+            nivel = 'Sênior';
+        }
+
+        mensagem += `${arrayProjeto.length} é a quantidade de projetos e ${nivel} é seu nível de experiência.`
+
+        div_mensagem_status.innerHTML = mensagem
+        div_mensagem_projetos.innerHTML = ''
+    }
+
+    function verListaProjeto() {
+        var mensagem = ''
+
+        if (arrayProjeto.length != 0) {
+            for (var i = arrayProjeto.length - 1; i >= 0; i--) {
+                mensagem += `${arrayProjeto[i]} <br>`
+            }
+        } else {
+            mensagem = 'Nenhum projeto foi cadastrado!'
+        }
+
+
+        div_mensagem_projetos.innerHTML = mensagem;
+    }
+</script>

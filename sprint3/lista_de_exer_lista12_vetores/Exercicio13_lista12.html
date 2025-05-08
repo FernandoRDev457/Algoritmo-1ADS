@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 13 - Controle de Campanha de Time de Futebol com Análise de Aproveitamento</title>
+</head>
+
+<body>
+    <h1>Exercício 13 - Controle de Campanha de Time de Futebol com Análise de Aproveitamento</h1>
+
+    <div>
+        Indique o resultado:
+        <select id="select_resultado">
+            <option value="" disabled selected>Qual foi o Resultado....</option>
+            <option value="vitoria">Vitória</option>
+            <option value="empate">Empate</option>
+            <option value="derrota">Derrota</option>
+        </select>
+        <button onclick="registrarJogo()">Registrar Jogo</button>
+    </div>
+
+    <br>
+
+    <div id="div_mensagem_resultado"></div>
+
+    <br>
+
+    <div>
+        Indique qual jogo você deseja saber o resultado: <br>
+        <input type="text" id="input_search">
+        <button onclick="pesquisarJogo()">Pesquisar</button>
+    </div>
+
+    <div id="div_mensagem_search"></div>
+</body>
+
+</html>
+<script>
+    var arrayResultados = [];
+
+    function registrarJogo() {
+        var resultado = select_resultado.value;
+        var mensagem = '';
+
+        arrayResultados.push(resultado);
+        alert('Resultado Registrado!')
+
+        var vitoria = 0;
+        var empate = 0;
+        var derrota = 0;
+
+        for (var i = 0; i < arrayResultados.length; i++) {
+            if (arrayResultados[i] == 'vitoria') {
+                vitoria++;
+            } else if (arrayResultados[i] == 'empate') {
+                empate++;
+            } else {
+                derrota++;
+            }
+        }
+
+        var totalPontos = (vitoria * 3) + (empate * 1)
+
+        mensagem =
+            `
+        O time teve: ${vitoria} vitórias, ${empate} empates, ${derrota} derrotas <br>
+        Pontuação total: ${totalPontos} pontos <br>
+        Aproveitamento: ${(totalPontos / ((vitoria + empate + derrota) * 3) * 100).toFixed(2)}%
+        `
+
+        div_mensagem_resultado.innerHTML = mensagem;
+        div_mensagem_search.innerHTML = ''
+    }
+
+    function pesquisarJogo() {
+        var pesquisa = input_search.value;
+        var mensagem = ''
+
+        if (arrayResultados[pesquisa - 1] != undefined) {
+            mensagem = `No ${pesquisa}° jogo, o time ${arrayResultados[pesquisa - 1]}`
+        } else {
+            mensagem = `Não foi cadastrado um ${pesquisa}º jogo`
+        }
+
+        div_mensagem_search.innerHTML = mensagem;
+    }
+</script>

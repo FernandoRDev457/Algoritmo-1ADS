@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2 - Diário de Viagens: Do Primeiro ao Último Destino</title>
+</head>
+
+<body>
+    <h1>Exercício 2 - Diário de Viagens: Do Primeiro ao Último Destino</h1>
+
+    <div>
+        Destino da Viagem:
+        <input type="text" id="input_destino">
+        <button onclick="adicionarDestino()">Adicionar</button>
+    </div>
+
+    <br>
+    Histórico:
+    <div>
+        <button onclick="acessarPrimeiraViagem()">Primeira Viagem</button>
+        <button onclick="acessarTerceiraViagem()">Terceira Viagem</button>
+        <button onclick="acessarUltimaViagem()">Última Viagem</button>
+    </div>
+
+    <br>
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var arrayViagens = []
+    var mensagem = '';
+
+    function adicionarDestino() {
+        var destino = input_destino.value;
+
+        arrayViagens.push(destino);
+        alert('Destino Adicionar na Lista')
+    }
+
+    function acessarPrimeiraViagem() {
+        if (arrayViagens.length != 0) {
+            mensagem = `Primeira Viagem - ${arrayViagens[0]}`;
+        } else {
+            mensagem = 'Ainda não Viajou'
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function acessarTerceiraViagem() {
+        if (arrayViagens[2] != undefined) {
+            mensagem = `Terceira Viagem - ${arrayViagens[2]}`;
+        } else {
+            mensagem = 'Ainda não fez a Terceira viagem'
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+    function acessarUltimaViagem() {
+        if (arrayViagens.length != '') {
+            mensagem = `Última Viagem - ${arrayViagens[arrayViagens.length - 1]}`;
+        } else {
+            mensagem = 'Ainda não Viajou'
+        }
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

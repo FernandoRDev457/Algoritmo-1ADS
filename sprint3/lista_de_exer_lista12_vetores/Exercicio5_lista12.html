@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5 - Painel de Favoritos: Seus Filmes em Destaque</title>
+</head>
+
+<body>
+    <h1>Exercício 5 - Painel de Favoritos: Seus Filmes em Destaque</h1>
+
+    <div>
+        Cadastre o nome dos seus filmes favoritos: <br>
+        <input type="text" id="input_filme">
+        <button onclick="cadastrarFilme()">Cadastrar Filme</button>
+    </div>
+
+    <br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var arrayFilmes = []
+
+    function cadastrarFilme() {
+        var filme = input_filme.value;
+        var mensagem = '';
+
+        arrayFilmes.push(filme);
+        alert('Filme Cadastrado com Sucesso!');
+
+        var terceiroFilme = ''
+        if(arrayFilmes[2] == undefined){
+            terceiroFilme = 'Ainda não existe!';
+        } else {
+            terceiroFilme = arrayFilmes[2];
+        }
+
+        mensagem =
+        `
+        Seu filme favorito: ${arrayFilmes[0]} <br>
+        Seu 3º filme favorito: ${terceiroFilme} <br>
+        Total de filmes cadastrados: ${arrayFilmes.length} <br>
+        `
+
+        div_mensagem.innerHTML = mensagem;
+    }
+
+   
+</script>
