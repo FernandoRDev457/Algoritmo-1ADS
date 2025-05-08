@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 15 - Sistema de Cadastro de Produtos com Relatório de Preço de Venda</title>
+</head>
+
+<body>
+    <h1>Exercício 15 - Sistema de Cadastro de Produtos com Relatório de Preço de Venda</h1>
+
+    <div>
+        Informe o Nome do Produto: <br>
+        <input type="text" id="input_produto">
+        <br><br>
+
+        Infomre o Preço da Compra: <br>
+        <input type="text" id="input_preco">
+    </div>
+
+    <br>
+
+    <button onclick="cadastrar()">Cadastrar</button>
+
+    <br>
+
+    <button onclick="gerarRelatorio()">Relatório de estoque</button>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    var arrayProduto = [];
+    var arrayPrecosProdutos = [];
+
+    function cadastrar() {
+        var produto = input_produto.value;
+        var preco = Number(input_preco.value);
+
+        if (!(produto == '' || preco == 0)) {
+            arrayProduto.push(produto);
+            arrayPrecosProdutos.push(preco);
+            alert('Produto cadastrado com Sucesso!')
+        } else {
+            alert('Preencha todos os campos para realizar o cadastro!');
+        }
+    }
+
+    function gerarRelatorio() {
+        console.log(arrayProduto)
+        if (arrayProduto[0] != undefined) {
+            var mensagem = `Total de Produtos: ${arrayProduto.length} <br><br>`;
+            var precoAcrescimo;
+
+            for (var i = 0; i < arrayProduto.length; i++) {
+                precoAcrescimo = arrayPrecosProdutos[i] * 1.25;
+
+                mensagem +=
+                    `Produto ${i + 1}: ${arrayProduto[i]} <br>
+                    Preço de compra: R$${arrayPrecosProdutos[i]}. Vender por R$${precoAcrescimo} <br><br>`;
+            }
+
+        } else {
+            mensagem = 'Ainda não foi cadastrado nenhum produto!'
+        }
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 14 - Registro de Números com Histórico, Maior e Menor Valor</title>
+</head>
+
+<body>
+    <h1>Exercício 14 - Registro de Números com Histórico, Maior e Menor Valor</h1>
+
+    <div>
+        Digite um Número qualquer:
+        <input type="text" id="input_num">
+        <button onclick="analisar()">Analisar Histórico</button>
+    </div>
+
+    <br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+<script>
+    arrayNumeros = [];
+    var maior = 0;
+    var menor = 0;
+
+
+    function analisar() {
+        var numero = Number(input_num.value);
+        var mensagem = '';
+
+        arrayNumeros.push(numero);
+        alert('Número cadastrado com sucesso!');
+
+        if(maior == 0 && menor == 0){
+            maior = arrayNumeros[0];
+            menor = arrayNumeros[0];
+        }
+
+
+        for (var i = 0; i < arrayNumeros.length; i++) {
+            mensagem += `${i + 1}° Número: ${arrayNumeros[i]} <br>`;
+
+
+            if (menor >= arrayNumeros[i]) {
+                menor = arrayNumeros[i];
+                        }
+
+            if (maior <= arrayNumeros[i]) {
+                maior = arrayNumeros[i];
+            }
+        }
+
+        mensagem += `<br>Maior: ${maior} <br>Menor: ${menor}`;
+
+        div_mensagem.innerHTML = mensagem;
+    }
+</script>
