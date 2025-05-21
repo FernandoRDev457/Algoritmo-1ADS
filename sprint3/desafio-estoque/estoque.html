@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio - Controle de estoque</title>
+</head>
+
+<body>
+    <h1>Desafio - Controle de estoque</h1>
+
+    <div>
+        Registre o nome:
+        <input type="text" id="input_nome">
+        <br><br>
+        Registre o código:
+        <input type="text" id="input_codigo">
+        <br><br>
+        Registre a quantidade do produto:
+        <input type="text" id="input_qtd">
+    </div>
+
+    <br>
+
+    <div>
+        <button onclick="cadastrarProduto()">Cadastrar Produto</button>
+        <button onclick="reposicaoProduto()">Repor Estoque</button>
+        <button onclick="venderProduto()">Vender Produto</button>
+        <button onclick="exibirRelatorio()">Exibir Relatório</button>
+    </div>
+
+    <br><br>
+
+    <div id="div_mensagem"></div>
+</body>
+
+</html>
+
+<script>
+    var arrayNome = [];
+    var arrayCodigo = [];
+    var arrayQtd = [];
+
+    function limpar() {
+        input_nome.value = ''
+        input_codigo.value = ''
+        input_qtd.value = ''
+    }
+
+    function cadastrarProduto() {
+        var nome = input_nome.value;
+        var codigo = input_codigo.value;
+        var qtd = input_qtd.value;
+
+        var validacaoCodigo = true;
+        var validacaoQtd = false;
+
+        if (nome != '' || codigo != '' || qtd == '') {
+            for (var i = 0; i < arrayCodigo.length; i++) {
+                if (codigo == arrayCodigo[i]) {
+                    alert('Código de produto já existente');
+                    validacaoCodigo = false;
+                    break;
+                } else {
+                    validacaoCodigo = true;
+                }
+            }
+
+            qtd = Number(qtd)
+            if (qtd >= 10 && !isNaN(qtd)) {
+                validacaoQtd = true;
+            } else {
+                alert('Quantidade Inválida!! Colocar um valor de no mínimo 10')
+            }
+
+            if (validacaoCodigo == true && validacaoQtd == true) {
+                arrayNome.push(nome);
+                arrayCodigo.push(codigo);
+                arrayQtd.push(qtd);
+                alert(`Produto ${nome} registrado com sucesso`);
+                limpar()
+            }
+        } else {
+            alert('Preencha todos os campos para registrar um novo produto!!    ')
+        }
+    }
+
+    function reposicaoProduto() {
+        var codigo = input_codigo.value;
+        var qtd = input_qtd.value;
+
+        var validacaoNome = false
+        var validacaoCodigo = false;
+        var validacaoQtd = false;
+
+        var posicaoQtd;
+
+        if (codigo != '' || qtd == '') {
+            if (arrayCodigo.length == 0) {
+                alert('Nenhum produto foi cadastrado ainda')
+            } else {
+
+
+                for (var i = 0; i < arrayCodigo.length; i++) {
+                    if (codigo == arrayCodigo[i]) {
+                        validacaoCodigo = true;
+                        posicaoQtd = i
+                        break;
+                    } else {
+                        alert('Produto não identificado');
+                        validacaoCodigo = false;
+                    }
+                }
+            }
+
+            qtd = Number(qtd)
+            if (qtd > 0 && !isNaN(qtd)) {
+                validacaoQtd = true;
+            } else {
+                alert('Quantidade Inválida!! Colocar um valor maior que 0')
+            }
+
+            if (validacaoCodigo == true && validacaoQtd == true) {
+                arrayQtd[posicaoQtd] = qtd;
+                alert(`${qtd}x do ${arrayNome[posicaoQtd]} foi reposto com sucesso`);
+                limpar()
+            }
+        } else {
+            alert('Preencha os campos de codigo e quantidade para realizar a reposição do produto!!    ')
+        }
+    }
+
+    function venderProduto() {
+        var nome = input_nome.value;
+        var codigo = input_codigo.value;
+        var qtd = input_qtd.value;
+
+        var validacaoNome = false;
+        var validacaoCodigo = false;
+        var validacaoQtd = false;
+
+        var posicaoQtd;
+
+        if (nome != '' || codigo != '' || qtd == '') {
+            if (arrayCodigo.length == 0) {
+                alert('Nenhum produto foi cadastrado ainda')
+            } else {
+
+
+                for (var i = 0; i < arrayCodigo.length; i++) {
+                    if (codigo == arrayCodigo[i && nome == arrayNome[i]]) {
+                        validacaoCodigo = true;
+                        validacaoNome = true;
+                        posicaoQtd = i;
+                        break;
+                    } else {
+                        alert('Produto não identificado');
+                        validacaoCodigo = false;
+                    }
+                }
+            }
+
+            qtd = Number(qtd)
+            if (qtd > 0 && !isNaN(qtd)) {
+                validacaoQtd = true;
+            } else {
+                alert('Quantidade Inválida!! Colocar um valor maior que 0 para realiza a venda')
+            }
+
+            if (validacaoNome == true || validacaoCodigo == true && validacaoQtd == true) {
+                var qtdAtual = arrayQtd[posicaoQtd] - qtd
+                arrayQtd[posicaoQtd] = qtdAtual;
+                alert(`${qtd}x do ${arrayNome[posicaoQtd]} foi vendido com sucesso`);
+                limpar()
+
+                if (arrayQtd[posicaoQtd] < 10) {
+                    alert(`Reposição Urgente no Produto ${arrayNome[posicaoQtd]}`)
+                }
+            }
+        } else {
+            alert('Preencha todos os campos para vender um produto!!')
+        }
+    }
+
+    function exibirRelatorio() {
+        if (arrayCodigo.length == 0) {
+            div_mensagem.innerHTML = "Nenhum Produto foi Cadastrado ainda!!"
+        } else {
+
+
+            var mensagem = 'Relatório dos Produtos: <br><br>'
+
+            for (var i = 0; i < arrayCodigo.length; i++) {
+                var statusQtd = ''
+                if (arrayQtd[i] < 10) {
+                    statusQtd = 'Precisa Repor'
+                } else {
+                    statusQtd = 'OK'
+                }
+                mensagem += `Código: ${arrayCodigo[i]} | Produto: ${arrayNome[i]} | Quantidade em Estoque: ${arrayQtd[i]} (${statusQtd})<br>`;
+            }
+
+            div_mensagem.innerHTML = mensagem;
+        }
+    }
+</script>
